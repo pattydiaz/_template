@@ -1,0 +1,45 @@
+.swiper {
+  $self: &;
+
+  &-pagination {
+    .slider-mobile & {
+      @include bp-up(md) {
+        display: none;
+      }
+    }
+
+    &-bullet {
+      --swiper-pagination-bullet-inactive-opacity: 1;
+      --swiper-pagination-bullet-inactive-color: transparent;
+      --swiper-pagination-color: currentColor;
+      --swiper-pagination-bullet-width: 10px;
+      --swiper-pagination-bullet-height: 10px;
+      border: 1px solid currentColor;
+      transition: background-color .3s ease;
+    }
+  }
+
+  &-btn {
+
+    &#{$self}-prev {
+
+
+    }
+
+    &#{$self}-next {
+ 
+    }
+  }
+
+  &.slider-mobile {
+    @include bp-up(md) {
+      overflow: visible;
+    }
+
+    #{$self}-wrapper {
+      @include bp-up(md) {
+        transform: none !important;
+      }
+    }
+  }
+}

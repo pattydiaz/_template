@@ -1,0 +1,98 @@
+@mixin end-transform($visibility: false) {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+
+  @if $visibility {
+    visibility: visible;
+  }
+}
+
+@mixin end-opacity($visibility: false) {
+  opacity: 1;
+
+  @if $visibility {
+    visibility: visible;
+  }
+}
+
+@mixin fade-in($duration:.8s, $timing: ease, $visibility: false) {
+  opacity: 0;
+  will-change: opacity;
+
+  @if $visibility {
+    transition: opacity $duration $timing, visibility $duration $timing;
+    visibility: hidden;
+  }
+
+  @else {
+    transition: opacity $duration $timing;
+  }
+}
+
+@mixin fade-up-in($duration: .65s, $timing: ease, $var: 25px, $visibility: false) {
+  opacity: 0;
+  transform: translate3d(0, $var, 0);
+  will-change: transform, opacity;
+
+  @if $visibility {
+    visibility: hidden;
+    transition: opacity $duration $timing, transform $duration $timing, visibility $duration $timing;
+  }
+
+  @else {
+    transition: opacity $duration $timing, transform $duration $timing;
+  }
+}
+
+@mixin fade-down-in($duration:.65s, $timing: ease, $var: -25px, $visibility: false) {
+  opacity: 0;
+  transform: translate3d(0, $var, 0);
+  will-change: transform, opacity;
+
+  @if $visibility {
+    visibility: hidden;
+    transition: opacity $duration $timing, transform $duration $timing, visibility $duration $timing;
+  }
+
+  @else {
+    transition: opacity $duration $timing, transform $duration $timing;
+  }
+}
+
+@mixin fade-right-in($duration:.65s, $timing: ease, $var: 25px, $visibility: false) {
+  opacity: 0;
+  transform: translate3d($var, 0, 0);
+  will-change: transform, opacity;
+
+  @if $visibility {
+    visibility: hidden;
+    transition: opacity $duration $timing, transform $duration $timing, visibility $duration $timing;
+  }
+
+  @else {
+    transition: opacity $duration $timing, transform $duration $timing;
+  }
+}
+
+@mixin fade-left-in($duration:.65s, $timing: ease, $var: -25px, $visibility: false) {
+  opacity: 0;
+  transform: translate3d($var, 0, 0);
+  will-change: transform, opacity;
+
+  @if $visibility {
+    visibility: hidden;
+    transition: opacity $duration $timing, transform $duration $timing, visibility $duration $timing;
+  }
+
+  @else {
+    transition: opacity $duration $timing, transform $duration $timing;
+  }
+}
+
+@mixin child-delay($number:50, $delay:.15s) {
+  @for $i from 1 to ($number + 1) {
+    &:nth-child(#{$i}) {
+      transition-delay: $i * $delay;
+    }
+  }
+}

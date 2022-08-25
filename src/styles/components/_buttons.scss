@@ -1,0 +1,102 @@
+@mixin text-decoration($wp: false) {
+  position: relative;
+
+  @if $wp {
+    &:hover,
+    &:focus {
+    }
+  }
+
+  @else {
+    @include hover {
+
+    }
+  }
+}
+
+@mixin btn-default($important: null) {
+  display: inline-block $important;
+  min-width: 42px $important;
+  min-height: 42px $important;
+  text-decoration: none $important;
+  cursor: pointer $important;
+  pointer-events: all $important;
+  white-space: nowrap;
+
+  body.mobile & {
+    min-width: 48px $important;
+    min-height: 48px $important;
+  }
+}
+
+@mixin btn-primary($important: null, $wp: false) {
+  @if $wp {
+    &:hover,
+    &:focus {
+
+    }
+  }
+  
+  @else {
+    @include hover {
+
+    }
+  }
+
+}
+
+@mixin btn-secondary($important: null, $wp: false) {
+  @if $wp {
+    &:hover,
+    &:focus {
+
+    }
+  }
+  
+  @else {
+    @include hover {
+
+    }
+  }
+}
+
+@mixin btn-disabled {
+  cursor: no-drop;
+  opacity: .5;
+  pointer-events: none;
+}
+
+button {
+  padding: 0;
+  cursor: pointer;
+}
+
+.button {
+  $self: &;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+
+  &-transparent {
+    @extend #{$self};
+    background-color: transparent;
+  }
+}
+
+.btn {
+  $self: &;
+
+  &-primary {
+    @include btn-primary;
+  }
+
+  &-secondary {
+    @include btn-secondary;
+  }
+
+  &[disabled="disabled"],
+  &.disabled {
+    @include btn-disabled;
+  }
+
+}

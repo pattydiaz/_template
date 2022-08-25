@@ -1,0 +1,43 @@
+.acf {
+  &-fields {
+    >.acf-field {
+
+      .acf-label {
+        .description {
+          font-style: $fs-italic;
+          font-size: 90%;
+          opacity: .75;
+          color: red;
+        }
+      }
+
+      &[data-width="25"] {
+        @include bp-down(sm) {
+          width: 50% !important;
+        }
+      }
+
+      .acf-image-uploader {
+        .image-wrap {
+          max-width: 150px !important;
+        }
+      }
+    }
+  }
+
+  &-range-wrap {
+    input[type=number] {
+      min-width: 4em !important;
+    }
+  }
+
+  &-oembed {
+    .canvas {
+      min-height: 100px !important;
+
+      iframe {
+        height: auto;
+      }
+    }
+  }
+}

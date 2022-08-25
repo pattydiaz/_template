@@ -1,0 +1,35 @@
+.container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 1;
+  
+  &:not(.px-0) {
+    padding-left: $spacing*1.5;
+    padding-right: $spacing*1.5;
+
+    @include bp-up(md) {
+      padding-left: $spacing*3;
+      padding-right: $spacing*3;
+    }
+
+    @include bp-up(xl) {
+      padding-left: $spacing*5;
+      padding-right: $spacing*5;
+    }
+  }
+  
+  @each $name, $breakpoint in $breakpoints {
+    &-#{$name} {
+      max-width: ($breakpoint - 0.02);
+
+      @include bp-up(md) {
+        max-width: ($breakpoint - 0.02 + 30);
+      }
+
+      @include bp-up(xl) {
+        max-width: ($breakpoint - 0.02 + 50);
+      }
+    }
+  }
+}

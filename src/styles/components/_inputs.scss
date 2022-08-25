@@ -1,0 +1,181 @@
+@mixin input($important: null) {
+  @include body($important);
+}
+
+@mixin input-label($important: null) {
+  @include body($important);
+  font-weight: $fw-semibold $important;
+}
+
+@mixin input-field($important: null) {
+  width: 100% $important;
+  min-height: 50px $important;
+  padding: 0 $spacing $important;
+  border: 2px solid currentColor $important;
+  color: currentColor $important;
+  @include input($important);
+
+  &::placeholder {
+    color: currentColor $important;
+  }
+
+  &:focus {
+    border-color: red $important;
+  }
+
+  &.error {
+    border-color: $error $important;
+  }
+}
+
+@mixin input-number($important: null, $border: 2px) {
+  min-width: 45px $important;
+  min-height: 40px $important;
+  padding: 0;
+  text-align: center $important;
+  border: $border solid var(--border-color, currentColor) $important;
+  color: currentColor $important;
+  @include body;
+
+  &::placeholder {
+    color: currentColor $important;
+  }
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    opacity: 1;
+  }
+}
+
+@mixin input-checkbox($important: null) {
+  position: relative $important;
+  display: inline-block $important;
+  vertical-align: middle $important;
+  width: 18px $important;
+  height: 18px $important;
+  margin-right: $spacing/2 $important;
+  border: 2px solid currentColor $important;
+  cursor: pointer $important;
+
+  &:after {
+    content:'';
+    @include center;
+    height: 12px;
+    width: 12px;
+    margin: 0;
+    @include mask('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 543.66889 543.66889" fill="currentColor"><path d="M176.07343,387.75444l-124.88-124.88-42.559,42,167.44001,167.44L535.03446,113.35445l-42-42L176.07343,387.75444Z"/></svg>');
+    background-color: currentColor;
+    @include hide;
+    transition: visibility .3s ease, opacity .3s ease;
+  }
+
+  &:focus {
+    border-color: red $important;
+  }
+
+  &:checked {
+    &:after {
+      @include show;
+    }
+  }
+
+  + label {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+@mixin input-radio($important: null) {
+  position: relative $important;
+  display: inline-block $important;
+  vertical-align: middle $important;
+  width: 18px $important;
+  height: 18px $important;
+  margin-right: $spacing/2 $important;
+  border: 2px solid currentColor $important;
+  border-radius: 100px;
+  cursor: pointer $important;
+
+  &:after {
+    content:'';
+    @include center;
+    height: 8px;
+    width: 8px;
+    margin: 0;
+    background-color: currentColor;
+    border-radius: 100px;
+    @include hide;
+    transition: visibility .3s ease, opacity .3s ease;
+  }
+
+  &:focus {
+    border-color: red $important;
+  }
+
+  &:checked {
+    &:after {
+      @include show;
+    }
+  }
+
+  + label {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+@mixin input-select($important: null) {
+  @include input-field($important);
+  background: url(images/icon-caret.svg) $white no-repeat calc(100% - 15px) 50%/12px 12px $important;
+}
+
+@mixin input-textarea($important: null) {
+  width: 100% $important;
+  min-height: 100px $important;
+  padding: $spacing $important;
+  border: 2px solid currentColor $important;
+  color: currentColor $important;
+  @include input($important);
+
+  &::placeholder {
+    color: currentColor $important;
+  }
+
+  &:focus {
+    border-color: red $important;
+  }
+}
+
+.input {
+  $self: &;
+
+  &-field {
+    @include input-field;
+  }
+
+  &-number {
+    @include input-number;
+  }
+
+  &-select {
+    @include input-select;
+  }
+
+  &-textarea {
+    @include input-textarea;
+  }
+
+  &-checkbox {
+    @include input-checkbox;
+  }
+
+  &-radio {
+    @include input-radio;
+  }
+
+  &-alert {
+    &.error {
+      color: $error !important;
+    }
+  }
+}

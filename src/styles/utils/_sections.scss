@@ -1,0 +1,62 @@
+.section {
+	$self: &;
+	position: relative;
+  width: 100%;
+  // z-index: 1;
+  
+  div[class*="-text"] {
+    position: relative;
+    width: 100%;
+		z-index: 1;
+  }
+  
+  &-full {
+    height: calc(100vh - var(--hh, 160px));
+		min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+		@include bp-up(md) {
+      min-height: 690px;
+		}
+    
+    .bg-cover,
+    .bg-inline {
+      min-height: 500px;
+
+      @include bp-up(md) {
+        min-height: 690px;
+      }
+    }
+	}
+
+	&-default {
+		padding-top: $spacing*5;
+		padding-bottom: $spacing*5;
+    
+    @include bp-up(sm) {
+      padding-top: $spacing*10;
+      padding-bottom: $spacing*10;
+    }
+		
+		&-top {
+			padding-top: $spacing*5;
+      
+      @include bp-up(sm) {
+        padding-top: $spacing*10;
+      }
+
+		}
+
+		&-bottom {
+			padding-bottom: $spacing*5;
+      
+      @include bp-up(sm) {
+        padding-bottom: $spacing*10;
+      }
+    }
+  
+	}
+}

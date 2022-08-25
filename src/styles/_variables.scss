@@ -1,0 +1,113 @@
+// ================
+// Type
+// ================
+
+$fs-normal: normal;
+$fs-italic: italic;
+
+$ff-serif: serif;
+$ff-sans-serif: sans-serif;
+
+$fw-thin: 100;
+$fw-xlight: 200;
+$fw-light: 300;
+$fw-normal: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+$fw-xbold: 800;
+$fw-black: 900;
+
+// ================
+// Colors
+// ================
+
+$black: #000000;
+$white: #FFFFFF;
+$transparent: transparent;
+$error: #c90007;
+
+$colors: (
+  'black' : $black,
+  'white' : $white,
+  'transparent' : $transparent,
+);
+
+// ================
+// Easing
+// ================
+
+
+
+// ================
+// Spacing
+// ================
+
+$spacing: 10px;
+$spacing-x: $spacing;
+$spacing-y: $spacing;
+$spacers: (
+  center: (
+      x: -100%
+  ),
+  auto: (
+      x: auto,
+      y: auto
+  ),
+  0: (
+      x: 0,
+      y: 0
+    ),
+  h: (
+      x: $spacing-x / 2,
+      y: $spacing-y / 2
+    ),
+  q: (
+      x: $spacing-x * 1.5,
+      y: $spacing-y * 1.5
+    ),
+  n1: (
+      x: -$spacing,
+      y: -$spacing
+  ),
+  1: (
+      x: $spacing-x,
+      y: $spacing-y
+    ),
+  2: (
+      x: ($spacing-x * 2),
+      y: ($spacing-y * 2)
+    ),
+  3: (
+      x: ($spacing-x * 3),
+      y: ($spacing-y * 3)
+    ),
+  4: (
+      x: ($spacing-x * 4),
+      y: ($spacing-y * 4)
+    ),
+  5: (
+      x: ($spacing-x * 5),
+      y: ($spacing-y * 5)
+    ),
+  6: (
+      x: ($spacing-x * 6),
+      y: ($spacing-y * 6)
+    ),
+  7: (
+      x: ($spacing-x * 7),
+      y: ($spacing-y * 7)
+    ),
+  8: (
+      x: ($spacing-x * 8),
+      y: ($spacing-y * 8)
+    ),
+  9: (
+      x: ($spacing-x * 9),
+      y: ($spacing-y * 9)
+    ),
+  10: (
+      x: ($spacing-x * 10),
+      y: ($spacing-y * 10)
+    ),
+);

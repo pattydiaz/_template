@@ -1,0 +1,16 @@
+#wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  overflow: hidden;
+  @include hide;
+  transition: visibility .3s ease, opacity .3s ease;
+
+  @include bp-up(md) {
+    min-height: 690px;
+  }
+
+  body.loaded & {
+    @include show;
+  }
+}

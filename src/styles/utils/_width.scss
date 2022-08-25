@@ -1,0 +1,32 @@
+@for $i from 1 through 10 {
+  .w-#{$i*10} {
+    width: $i*10%;
+  }
+  
+  .wd-#{$i*10} {
+    @include bp-up(md) {
+      width: $i*10%;
+    }
+  }
+}
+
+$widths: (
+  "25": 25%,
+  "33": 33.333%,
+);
+
+@each $name, $width in $widths {
+  .w-#{$name} {
+    width: #{$width};
+  }
+  
+  .wd-#{$name} {
+    @include bp-up(md) {
+      width: #{$width};
+    }
+  }
+}
+
+.w-max {
+  max-width: var(--mw, 560px);
+}

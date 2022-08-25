@@ -1,0 +1,40 @@
+.d-flex {
+  $self: &;
+  display: flex;
+
+  &-wrap {
+    @extend #{$self};
+    flex-wrap: wrap;
+  }
+
+  &--center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--sp-between {
+    justify-content: space-between;
+  }
+
+  &--top-center {
+    justify-content: center;
+    align-items: top;
+  }
+
+  &--end {
+    align-items: flex-end;
+  }
+
+  &-d {
+    @include bp-up(md) {
+      display: flex;
+    }
+
+    &-wrap {
+      @extend #{$self}-d;
+      @include bp-up(md) {
+        flex-wrap: wrap;
+      }
+    }
+  }
+}

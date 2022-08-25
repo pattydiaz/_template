@@ -1,0 +1,113 @@
+.icon {
+  position: relative;
+  display: block;
+  min-width: 48px;
+  min-height: 48px;
+
+  img,
+  svg {
+    @include center;
+    width: 100%;
+  }
+
+  &-sm {
+
+    img,
+    svg {
+      max-width: 15px;
+      max-height: 15px;
+    }
+  }
+
+  &-md {
+
+    img,
+    svg {
+      max-width: 25px;
+      max-height: 25px;
+    }
+  }
+
+  &-lg {
+
+    img,
+    svg {
+      max-width: 50px;
+      max-height: 50px;
+    }
+  }
+
+  &-xl {
+
+    img,
+    svg {
+      max-width: 100px;
+      max-height: 100px;
+    }
+  }
+
+  &-xx {
+
+    img,
+    svg {
+      max-width: 140px;
+      max-height: 140px;
+    }
+  }
+
+  &-round {
+
+    &:before {
+      content: '';
+      @include center;
+      width: 35px;
+      height: 35px;
+      border-radius: 100px;
+      background-color: var(--icon-bg, red);
+      border: 2px solid var(--icon-bg, red);
+      transition: background-color .3s ease;
+    }
+
+    &.button {
+      @include hover {
+        &:before {
+          background-color: $white;
+        }
+      }
+    }
+  }
+
+  &-close {
+    position: relative;
+    display: block;
+    transform: rotate(45deg) translateZ(0);
+
+    &:before,
+    &:after {
+      content:'';
+      @include center;
+      background-color: currentColor;
+    }
+
+    &:before {
+      height: 2px;
+      width: 35px;
+    }
+
+    &:after {
+      height: 35px;
+      width: 2px;
+    }
+  }
+
+  &.button {
+    &:not(.icon-round) {
+      opacity: 1;
+      transition: opacity .3s ease;
+
+      @include hover {
+        opacity: .5;
+      }
+    }
+  }
+}

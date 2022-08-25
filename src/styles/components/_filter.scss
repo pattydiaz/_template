@@ -1,0 +1,19 @@
+.filter {
+  $self: &;
+
+  &-results {
+    min-height: 1000px;
+    
+    *[data-filters] {
+      @include fade-up-in(.4s,ease,25px,true);
+
+      &.active {
+        @include end-transform(true);
+      }
+
+      &.hidden {
+        display: none !important;
+      }
+    }
+  }
+}

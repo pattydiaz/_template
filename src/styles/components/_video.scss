@@ -1,0 +1,16 @@
+.video {
+  $self: &;
+  
+  &-cover {
+    position: absolute;
+    top: -1px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+
+    iframe {
+      min-width: calc(100% + 2px);
+      min-height: calc(100% + 2px);
+    }
+  }
+}

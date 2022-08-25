@@ -1,0 +1,35 @@
+::selection {
+  background: $black;
+  color: $white;
+}
+
+html,
+body {
+  width: 100%;
+  background-color: $black;
+}
+
+body {
+  position: relative !important;
+  @include body;
+  color: $black;
+}
+
+body.stop-transitions * {
+  transition: none !important;
+}
+
+#page {
+  position: relative;
+  background-color: $white;
+}
+
+// a:not(.button):not(.btn) {
+a:not(a[class]){
+  cursor: pointer;
+  color: currentColor;
+  
+  .contents & {
+    @include text-decoration;
+  }
+}

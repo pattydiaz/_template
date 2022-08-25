@@ -1,0 +1,114 @@
+@mixin font($ff, $fn, $fw, $fs) {
+  @font-face {
+    font-family: "#{$ff}";
+    font-weight: $fw;
+    font-style: $fs;
+    font-display: swap;
+    unicode-range: U+?????;
+    src: 
+      local("#{$ff}"),
+      url("fonts/#{$fn}.woff") format("woff"),
+      url("fonts/#{$fn}.woff2") format("woff2");
+  }
+}
+
+@mixin hover {
+  body:not(.mobile) & {
+    &:hover,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+@mixin cover($position: absolute, $important: null) {
+  position: $position $important;
+  top: 0 $important;
+  left: 0 $important;
+  width: 100% $important;
+  height: 100% $important;
+}
+
+@mixin fullwidth {
+  position: relative;
+  max-width: initial;
+  width: 100vw;
+  margin-left: -50vw;
+  left: 50%;
+}
+
+@mixin transform-fix {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+
+@mixin hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@mixin show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+@mixin object-fit($objectfit: cover, $objectposition: 50% 50%) {
+  height: 100%;
+  width: 100%;
+  object-fit: $objectfit;
+  object-position: $objectposition;
+}
+
+@mixin input-reset($important: null) {
+  appearance: none $important;
+  border: none $important;
+  border-radius: 0 $important;
+  box-shadow: none $important;
+  box-sizing: border-box $important;
+}
+
+@mixin mask($url, $size: contain, $position: 50% 50%, $repeat: no-repeat) {
+  mask-image: url($url);
+  mask-size: $size;
+  mask-position: $position;
+  mask-repeat: $repeat;
+}
+
+@mixin ul-remove($margin:0, $padding:0) {
+  margin: $margin;
+  padding: $padding;
+  list-style: none;
+}
+
+@mixin aspect-ratio($width, $height) {
+  padding-bottom: ($height / $width) * 100%;
+}
+
+@mixin force-black {
+  filter: contrast(0) brightness(0);
+}
+
+@mixin force-white {
+  filter: brightness(0) invert(1);
+}
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

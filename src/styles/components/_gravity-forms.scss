@@ -1,0 +1,60 @@
+.gfield {
+  margin-bottom: $spacing/1.25 !important;
+
+  .gfield_label {
+    margin-bottom: 0 !important;
+    @include input-label(!important);
+  }
+
+  .ginput_container {
+
+    > input[type="url"],
+    > input[type="tel"],
+    > input[type="email"],
+    > input[type="text"] {
+      @include input-field(!important);
+    }
+
+    > textarea {
+      @include input-textarea(!important);
+    }
+
+    select {
+      @include input-select(!important);
+    }
+
+    input[type="checkbox"] {
+      @include input-checkbox(!important);
+
+      + label {
+        @include input(!important);
+        cursor: pointer;
+      }
+    }
+    
+    input[type="radio"] {
+      @include input-radio(!important);
+
+      + label {
+        @include input(!important);
+        cursor: pointer;
+      }
+    }
+
+    .grecaptcha-badge {
+      margin-left: auto;
+    }
+  }
+}
+
+.gform_button {
+  @include btn-secondary(!important);
+}
+
+.gform_footer {
+  justify-content: center;
+}
+
+.gform_wrapper.gravity-theme .gform_fields {
+  grid-row-gap: $spacing*2;
+}

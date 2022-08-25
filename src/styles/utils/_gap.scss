@@ -1,0 +1,27 @@
+.gap {
+  &-t {
+    padding-top: $spacing*5;
+
+    // @include bp-between(md,xx) {
+    //   // padding-top: 7%;
+    // }
+
+    @include bp-up(max) {
+      padding-top: 4%;
+      // padding-top: $spacing*10;
+    }
+  }
+  
+  &-b {
+    padding-bottom: $spacing*5;
+    
+    // @include bp-between(md,xx) {
+    //   padding-bottom: 7%;
+    // }
+
+    @include bp-up(max) {
+      padding-bottom: 4%;
+      // padding-bottom: $spacing*10;
+    }
+  }
+}

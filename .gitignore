@@ -1,0 +1,11 @@
+node_modules
+package-lock.json
+.DS_Store
+
+/public/*
+!/public/wp-content
+/public/wp-content/*
+!/public/wp-content/themes
+/public/wp-content/themes/*
+!/public/wp-content/themes/*-theme
+/public/wp-content/themes/*-theme/**/.DS_Store

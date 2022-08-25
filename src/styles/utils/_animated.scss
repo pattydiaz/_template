@@ -1,0 +1,74 @@
+.animated {
+  $self: &;
+
+  &-item {
+    &.fade-in { @include fade-in; }
+    &.fade-up-in { @include fade-up-in; }
+    &.fade-down-in { @include fade-down-in; }
+    &.fade-right-in { @include fade-right-in; }
+    &.fade-left-in { @include fade-left-in; }
+
+    &.delay-1 { transition-delay: .15s; }
+    &.delay-2 { transition-delay: .3s; }
+    &.delay-3 { transition-delay: .45s; }
+    &.delay-4 { transition-delay: .6s; }
+  }
+  
+  &-group {
+    &.fade-up-in {
+      >* {
+        @include fade-up-in;
+        @include child-delay;
+      }
+    }
+    
+    &.fade-down-in {
+      >* {
+        @include fade-down-in;
+        @include child-delay;
+      }
+    }
+    
+    &.fade-left-in {
+      >* {
+        @include fade-left-in;
+        @include child-delay;
+      }
+    }
+    
+    &.fade-right-in {
+      >* {
+        @include fade-right-in;
+        @include child-delay;
+      }
+    }
+  }
+
+  &.active {
+    &#{$self}-item {
+      
+      &.fade-in {
+        @include end-opacity;
+      }
+
+      &.fade-up-in,
+      &.fade-down-in,
+      &.fade-left-in,
+      &.fade-right-in {
+        @include end-transform;
+      }
+    }
+
+    &#{$self}-group {
+
+      &.fade-up-in,
+      &.fade-down-in,
+      &.fade-left-in,
+      &.fade-right-in {
+        >* {
+          @include end-transform(true);
+        }
+      }
+    }
+  }
+}
