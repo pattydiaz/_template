@@ -142,7 +142,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks("grunt-browser-sync");
 
-  grunt.registerTask("dev", ["sass:dist", 'postcss', "concat", "watch", "browserSync"]);
+  grunt.registerTask("dev", ["sass:dist", 'postcss', "concat", "browserSync", "watch"]);
   grunt.registerTask("prod", ["sass:dist", 'postcss', "concat", "cssmin", "uglify", "imagemin"]);
 
   grunt.registerTask("default", ["prod"]);
