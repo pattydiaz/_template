@@ -23,11 +23,12 @@ var Page = {
       });
   },
   height: function() {
-    wrapper.css('min-height','')
-    wrapper.attr("data-height", wrapper.innerHeight());
-
-    var nh = (wh - $('footer').innerHeight());
-    if (wh > wrapper.data('height'))
-      wrapper.css('min-height', nh);
+    if(wrapper.is(':visible')) {
+      wrapper.css('min-height','')
+      wrapper.attr("data-height", wrapper.innerHeight());
+  
+      var nh = (wh - $('footer').innerHeight());
+      if (wh > wrapper.data('height')) wrapper.css('min-height', nh);
+    }
   }
 }

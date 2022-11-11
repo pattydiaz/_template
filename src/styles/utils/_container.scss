@@ -1,7 +1,8 @@
 .container {
   position: relative;
   width: 100%;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   z-index: 1;
   
   &:not(.px-0) {

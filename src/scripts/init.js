@@ -1,6 +1,7 @@
 var Project = {
   init: function() {
-    Agegate.init();
+    Loader.init();
+    // Agegate.init();
     Header.init();
     Navigation.init();
 

@@ -20,6 +20,8 @@ get_header();
         while( have_rows('post-blocks') ): the_row();
           get_template_part(TP.'block', get_row_layout(), array('index'=>get_row_index()));
         endwhile;
+      else:
+        get_template_part(TP.'default','content');
       endif;
     ?>
 
