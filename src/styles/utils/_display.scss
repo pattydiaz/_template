@@ -3,6 +3,10 @@
   &-block { display: block; }
   &-inline { display: inline; }
   &-ib { display: inline-block; }
+  &-ib-middle {
+    display: inline-block;
+    vertical-align: middle;
+  }
 }
 
 @each $name, $breakpoint in $breakpoints {

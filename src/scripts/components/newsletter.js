@@ -1,11 +1,9 @@
-var form_footer = $('#mc-form-footer');
-
 var Newsletter = {
   init: function () {
     Newsletter.build();
   },
   build: function() {
-    Newsletter.form(form_footer);
+    Newsletter.form($('#mc-form-newsletter'));
   },
   form: function (el) {
     if (el.is(":visible")) {
@@ -16,11 +14,8 @@ var Newsletter = {
 
       function callbackFunction(resp) {
         if (resp.result === "success") {
-          var parent = el.parents('.form-wrap');
+          el.next().removeClass('d-none');
           el.remove();
-          parent.append(
-            "<div class='valid my-1 text-center'>Thank you for subscribing!</div>"
-          );
         }
       }
 

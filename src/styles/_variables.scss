@@ -7,6 +7,7 @@ $fs-italic: italic;
 
 $ff-serif: serif;
 $ff-sans-serif: sans-serif;
+$ff-monospace: monospace;
 
 $fw-thin: 100;
 $fw-xlight: 200;
@@ -22,22 +23,33 @@ $fw-black: 900;
 // Colors
 // ================
 
+$inherit: inherit;
+$current: currentColor;
+
 $black: #000000;
+$black-transparent: transparentize($black,0.5);
 $white: #FFFFFF;
+$white-transparent: transparentize($white,0.5);
 $transparent: transparent;
-$error: #c90007;
+$error: red;
 
 $colors: (
+  'inherit' : $inherit,
+  'current' : $current,
   'black' : $black,
+  'black-transparent' : $black-transparent,
   'white' : $white,
+  'white-transparent' : $white-transparent,
   'transparent' : $transparent,
+  'error' : $error,
 );
 
 // ================
 // Easing
 // ================
 
-
+$duration-default: .8s; 
+$ease-default: ease;
 
 // ================
 // Spacing
@@ -54,6 +66,34 @@ $spacers: (
       x: auto,
       y: auto
   ),
+  nh: (
+      x: -($spacing / 2),
+      y: -($spacing / 2)
+  ),
+  nq: (
+      x: -($spacing*1.5),
+      y: -($spacing*1.5)
+  ),
+  n1: (
+      x: -$spacing,
+      y: -$spacing
+  ),
+  n2: (
+      x: -($spacing*2),
+      y: -($spacing*2)
+  ),
+  n3: (
+      x: -($spacing*3),
+      y: -($spacing*3)
+  ),
+  n4: (
+      x: -($spacing*4),
+      y: -($spacing*4)
+  ),
+  n5: (
+      x: -($spacing*5),
+      y: -($spacing*5)
+  ),
   0: (
       x: 0,
       y: 0
@@ -66,10 +106,6 @@ $spacers: (
       x: $spacing-x * 1.5,
       y: $spacing-y * 1.5
     ),
-  n1: (
-      x: -$spacing,
-      y: -$spacing
-  ),
   1: (
       x: $spacing-x,
       y: $spacing-y

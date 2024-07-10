@@ -1,4 +1,4 @@
-@mixin end-transform($visibility: false) {
+@mixin end-transform($visibility: true) {
   opacity: 1;
   transform: translate3d(0,0,0);
 
@@ -7,7 +7,7 @@
   }
 }
 
-@mixin end-opacity($visibility: false) {
+@mixin end-opacity($visibility: true) {
   opacity: 1;
 
   @if $visibility {
@@ -15,7 +15,7 @@
   }
 }
 
-@mixin fade-in($duration:.8s, $timing: ease, $visibility: false) {
+@mixin fade-in($duration: $duration-default, $timing: $ease-default, $visibility: true) {
   opacity: 0;
   will-change: opacity;
 
@@ -29,7 +29,7 @@
   }
 }
 
-@mixin fade-up-in($duration: .65s, $timing: ease, $var: 25px, $visibility: false) {
+@mixin fade-up-in($duration: $duration-default, $timing: $ease-default, $var: 25px, $visibility: true) {
   opacity: 0;
   transform: translate3d(0, $var, 0);
   will-change: transform, opacity;
@@ -44,7 +44,7 @@
   }
 }
 
-@mixin fade-down-in($duration:.65s, $timing: ease, $var: -25px, $visibility: false) {
+@mixin fade-down-in($duration: $duration-default, $timing: $ease-default, $var: -25px, $visibility: true) {
   opacity: 0;
   transform: translate3d(0, $var, 0);
   will-change: transform, opacity;
@@ -59,7 +59,7 @@
   }
 }
 
-@mixin fade-right-in($duration:.65s, $timing: ease, $var: 25px, $visibility: false) {
+@mixin fade-right-in($duration: $duration-default, $timing: $ease-default, $var: 25px, $visibility: true) {
   opacity: 0;
   transform: translate3d($var, 0, 0);
   will-change: transform, opacity;
@@ -74,7 +74,7 @@
   }
 }
 
-@mixin fade-left-in($duration:.65s, $timing: ease, $var: -25px, $visibility: false) {
+@mixin fade-left-in($duration: $duration-default, $timing: $ease-default, $var: -25px, $visibility: true) {
   opacity: 0;
   transform: translate3d($var, 0, 0);
   will-change: transform, opacity;

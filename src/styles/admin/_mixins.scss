@@ -1,35 +1,54 @@
+@mixin wp-heading {
+  // @include heading-4;
+}
+
 @mixin wp-body {
-  @include caption;
+  // @include body;
 }
 
 @mixin wp-caption {
-  @include caption;
+  // @include body;
+}
+
+@mixin wp-label {
+  // @include body;
 }
 
 @mixin wp-input {
-  @include body;
+  // @include body;
+}
+
+@mixin wp-input-placeholder {
+  // @include body;
+}
+
+@mixin wp-admin {
+  font-style: $fs-italic;
+  font-size: 90%;
+  color: transparentize(red, 0.25);
 }
 
 @mixin wp-btn-reset {
   text-decoration: none !important;
-  border-color: transparent !important;
-  box-shadow: 0 0 0 0 transparent !important;
   outline: none !important;
   line-height: initial !important;
+  // border-color: transparent !important;
+  box-shadow: 0 0 0 0 transparent !important;
   border-radius: 0 !important;
 }
 
 @mixin wp-text-decoration {
-  @include text-decoration(true);
+  @include text-decoration(!important, true);
 }
 
 @mixin wp-btn-primary {
   @include wp-btn-reset;
-  @include btn-secondary(!important, true);
+  // @include btn-primary(!important, true);
 }
 
 @mixin wp-btn-secondary {
-  @include wp-btn-primary;
+  @include wp-btn-reset;
+  // @include btn-secondary(!important, true);
 }
 
 @mixin wp-logo {

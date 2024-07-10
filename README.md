@@ -10,8 +10,6 @@ Helpful/necessary workflow installations:
 - [npm-watch](https://www.npmjs.com/package/npm-watch)
 - [Browsersync](https://www.browsersync.io/docs/grunt)
 - [WordPress](https://wordpress.org/)
-- [Filezilla](https://filezilla-project.org/)
-- [Sourcetree](https://www.sourcetreeapp.com/)
 
 ## Setup
 
@@ -51,6 +49,11 @@ Then point to where your files are located in:
 </VirtualHost>
 ```
 
+While you're in this file make sure to update `Listen 8888` to:
+```
+Listen 80
+```
+
 Make sure MAMP settings look like this:
 
 - Apache Port: 80
@@ -59,15 +62,21 @@ Make sure MAMP settings look like this:
 
 ** Relaunch MAMP/clear browser cache every time you create a new project
 
+For details on how to set up this configuration with SSL [read here](https://stackoverflow.com/a/70017835).
+
 ### New Project
+
+** This build requires a GSAP Premimum License with a `.npmrc` file. Otherwise, remove and adjust dependencies and components as needed.
 
 - Download and rename the _template folder
 - In **package.json**, edit any instance of `project-name`
 - In **gruntfile.js**, edit the `theme` variable
-- Run `sudo npm install`
+- In **public/wp-content/themes**, rename **project-name**-theme
+- Run `npm install`
 
 ## Build
 
 - Launch MAMP
-- Run `grunt dev` to build the project
-- Run `grunt prod` when ready to migrate to FTP
+- Run `grunt dev` to build the project for development
+- Run `grunt prod` when ready to push to production
+- Run `grunt min` to compress images, remove unused CSS, and run production

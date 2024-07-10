@@ -3,32 +3,22 @@ var Page = {
     Page.build();
   },
   build: function() {
-    Page.setup();
-    Page.height();
-
-    w.on('resize',function() {
+    if(page.is(':visible')) {
       Page.height();
-    });
-  },
-  setup: function() {
-    if (wrapper.is(":visible")) 
-      var className = wrapper.attr("class");
-      var classList = wrapper.attr("class").split(/\s+/);
-
-      $.each(classList, function (index, item) {
-        if (className) {
-          item = item.replace("-page", "");
-          body.addClass(item);
-        }
-      });
+      Page.animate();
+    }
   },
   height: function() {
-    if(wrapper.is(':visible')) {
-      wrapper.css('min-height','')
-      wrapper.attr("data-height", wrapper.innerHeight());
-  
-      var nh = (wh - $('footer').innerHeight());
-      if (wh > wrapper.data('height')) wrapper.css('min-height', nh);
-    }
+    var vh = w.innerHeight() * 0.01;
+    body.get(0).style.setProperty("--vh", vh + "px");
+    
+    w.on("resize", function () {
+      vh = w.innerHeight() * 0.01;
+      body.get(0).style.setProperty("--vh", vh + "px");
+    });
+  },
+  animate: function() {
+    var page_anim = gsap.timeline();
+    page_anim.to(page, {opacity: 1, duration: 0.5, onStart:function(){ Loader.init(); }})
   }
-}
+};

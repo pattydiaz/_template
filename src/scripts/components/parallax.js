@@ -1,39 +1,37 @@
 var Parallax = {
   init: function() {
+    Parallax.build();
+  },
+  build: function() {
     Parallax.animate();
   },
   animate: function() {
-    $('.parallax').each(function() {
+    var parallax = $('.parallax');
+
+    parallax.each(function(){
       var $this = $(this);
-      var height = '200%';
-      var $data = $this.data('parallax');
-      var $item;
+      var item = $this.hasClass('parallax-item') ? $this : $this.find('.parallax-item');
 
-      if($this.hasClass('parallax-item'))
-        $item = $this;
-      else
-        $item = $this.find('.parallax-item');
+      // options
+      var percent = $this.data('percent') ? $this.data('percent') : 20;
+      var scrub = $this.data('scrub') ? $this.data('scrub') : true;
+      var offset = $this.data('offset') ? $this.data('offset') : 0;
 
-      var parallaxTween = gsap.fromTo($item, {y: -$data+'%'}, {y: $data+'%', duration: 1, ease: 'sine.inOut'});
-
-      var parallaxScene = new ScrollMagic.Scene({
-        triggerElement: $this[0],
-        duration: height
+      gsap.set(item,{
+        yPercent: $this.hasClass('no-offset') ? offset : percent
       });
 
-      // parallaxScene.addIndicators();
-      parallaxScene.triggerHook(1);
-      parallaxScene.setTween(parallaxTween);
-      parallaxScene.addTo(controller);
-
-      
-      w.on('resize',function(){
-        height = "200%";
-
-        parallaxScene.duration(height);
-        parallaxScene.triggerElement($this[0]);
-        parallaxScene.refresh();
+      gsap.to(item, {
+        yPercent: percent * -1,
+        ease: 'none',
+        scrollTrigger: {
+          // markers: true,
+          trigger: item,
+          start: '-50% 100%',
+          end: '100% 0',
+          scrub: scrub
+        }
       });
     });
   }
-}
+};

@@ -1,17 +1,18 @@
-var video = $('.video-cover');
-
 var Video = {
   init: function () {
     Video.build();
   },
   build: function () {
-    if(video.is(':visible')) Video.fit();
+    Video.fit();
+    Video.playback();
   },
   fit: function () {
+    var video = $('.video-cover');
+
     video.each(function() {
       var vid = $(this);
       var vid_id = vid.data('video-id');
-      var min_w = 0; // minimum video width allowed
+      var min_w = 5; // minimum video width allowed
       var vid_w_orig; // original video dimensions
       var vid_h_orig;
 
@@ -27,9 +28,9 @@ var Video = {
         w.on('resize', function () {
           Video.resize(vid, vid_w_orig, vid_h_orig, min_w, iframe);
         });
-        
-        // w.trigger("resize");
+
       });
+
     });
   },
   resize:function(el, w, h, min, emb) {
@@ -43,8 +44,8 @@ var Video = {
       var ew = el.parent().width();
       var eh = el.parent().height();
 
-      ew = Math.round(ew + 2);
-      eh = Math.round(eh + 2);
+      // ew = Math.round(ew);
+      // eh = Math.round(eh);
     }
 
     if(el.hasClass('parallax-item')) {
@@ -67,14 +68,57 @@ var Video = {
       scale = min / w;
     }
 
-    emb
-      .width(scale * w)
-      .height(scale * h)
-      .css({
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translateX(-50%) translateY(-50%)',
+    emb.width(scale * w).height(scale * h);
+  },
+  playback: function(el) {
+    var video = $('.video-cover');
+  
+    video.each(function(){
+      var $this = $(this);
+      var parent = $this.parent();
+      var iframe = $this.find('iframe')[0];
+
+      ScrollTrigger.create({
+        // markers: true,
+        trigger: $this,
+        start: '-10 100%',
+        end: parent.outerHeight()+' 0',
+        onEnter: () => { Video.play(iframe); },
+        onLeave:() => { Video.pause(iframe); },
+        onEnterBack: () => { Video.play(iframe); },
+        onLeaveBack: () => { Video.pause(iframe); }
       });
-  }
+
+    });
+  },
+  play: function(el) {
+    var iframe = el;
+
+    if(iframe) {
+      if($(iframe).hasClass('lazy')) {
+        var interval = setInterval(() => {
+          if($(iframe).attr('src') != undefined) {
+            clearInterval(interval);
+            var vimeo_video = new Vimeo.Player(iframe);
+            vimeo_video.play();
+          } 
+        }, 10);
+      }
+    }
+  },
+  pause: function(el) {
+    var iframe = el;
+
+    if(iframe) {
+      if($(iframe).hasClass('lazy')) {
+        var interval = setInterval(() => {
+          if($(iframe).attr('src') != undefined) {
+            clearInterval(interval);
+            var vimeo_video = new Vimeo.Player(iframe);
+            vimeo_video.pause();
+          } 
+        }, 10);
+      }
+    }
+  },
 };

@@ -84,6 +84,8 @@ define( 'WP_DEBUG', true );
 /* Add any custom values between this line and the "stop editing" line. */
 
 define( 'WP_POST_REVISIONS', false );
+define( 'DISABLE_CACHE', true );
+define( 'CACHE_EXPIRATION_TIME', 0 );
 
 /* That's all, stop editing! Happy publishing. */
 

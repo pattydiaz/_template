@@ -1,14 +1,14 @@
-@mixin font($ff, $fn, $fw, $fs) {
+@mixin font($fname, $ffile, $fweight, $fstyle) {
   @font-face {
-    font-family: "#{$ff}";
-    font-weight: $fw;
-    font-style: $fs;
+    font-family: "#{$fname}";
+    font-weight: $fweight;
+    font-style: $fstyle;
     font-display: swap;
     unicode-range: U+?????;
     src: 
-      local("#{$ff}"),
-      url("fonts/#{$fn}.woff") format("woff"),
-      url("fonts/#{$fn}.woff2") format("woff2");
+      local("#{$fname}"),
+      url("fonts/#{$ffile}.woff") format("woff"),
+      url("fonts/#{$ffile}.woff2") format("woff2");
   }
 }
 
@@ -29,12 +29,12 @@
   height: 100% $important;
 }
 
-@mixin fullwidth {
-  position: relative;
-  max-width: initial;
-  width: 100vw;
-  margin-left: -50vw;
-  left: 50%;
+@mixin fullwidth($important: null) {
+  position: relative $important;
+  left: 50% $important;
+  max-width: initial $important;
+  width: 100vw $important;
+  margin-left: -50vw $important;
 }
 
 @mixin transform-fix {
@@ -43,16 +43,30 @@
   perspective: 1000;
 }
 
-@mixin hide {
+@mixin pixel-fix {
+  transform: scale(1.005);
+}
+
+@mixin hide($animate: false, $duration: $duration-default, $ease: $ease-default) {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+
+  @if $animate == true {
+    will-change: opacity;
+    transition: opacity $duration $ease, visibility $duration $ease;
+  }
 }
 
-@mixin show {
+@mixin show($animate: false, $duration: $duration-default, $ease: $ease-default) {
   opacity: 1;
   visibility: visible;
   pointer-events: all;
+
+  @if $animate == true {
+    will-change: opacity;
+    transition: opacity $duration $ease, visibility $duration $ease;
+  }
 }
 
 @mixin center {
@@ -62,7 +76,7 @@
   transform: translate3d(-50%, -50%, 0);
 }
 
-@mixin object-fit($objectfit: cover, $objectposition: 50% 50%) {
+@mixin object-fit($objectfit: cover, $objectposition: var(--position, 50% 50%)) {
   height: 100%;
   width: 100%;
   object-fit: $objectfit;
@@ -102,13 +116,27 @@
   filter: brightness(0) invert(1);
 }
 
-@mixin sr-only {
+@mixin sr-only($important: null) {
+  position: absolute $important;
+  width: 1px $important;
+  height: 1px $important;
+  padding: 0 $important;
+  overflow: hidden $important;
+  clip: rect(0 0 0 0) $important;
+  clip-path: inset(50%) $important;
+  white-space: nowrap $important;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin underline($height: 2px) {
   position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: $height;
 }

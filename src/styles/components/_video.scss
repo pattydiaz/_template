@@ -3,14 +3,23 @@
   
   &-cover {
     position: absolute;
-    top: -1px;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    max-height: 100%;
     overflow: hidden;
     pointer-events: none;
     z-index: 1;
 
     iframe {
-      min-width: calc(100% + 2px);
-      min-height: calc(100% + 2px);
+      display: block;
+      @include center;
+      min-width: 100%;
+      min-height: 100%;
+    }
+
+    + img {
+      @include cover;
     }
   }
 }

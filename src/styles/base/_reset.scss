@@ -39,9 +39,9 @@ footer, header, hgroup, main, menu, nav, section, svg  {
 }
 
 body {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-word;
+  // overflow-wrap: break-word;
+  // word-wrap: break-word;
+  // word-break: break-word;
   // hyphens: auto;
 }
 
@@ -83,6 +83,11 @@ a:focus,
 a:hover,
 a:visited {
   text-decoration: none;
+}
+
+button {
+  color: inherit;
+  cursor: pointer;
 }
 
 input,

@@ -5,7 +5,7 @@
   margin-right: auto;
   z-index: 1;
   
-  &:not(.px-0) {
+  &:not([class*="px-"]) {
     padding-left: $spacing*1.5;
     padding-right: $spacing*1.5;
 
@@ -14,7 +14,7 @@
       padding-right: $spacing*3;
     }
 
-    @include bp-up(xl) {
+    @include bp-up(xx) {
       padding-left: $spacing*5;
       padding-right: $spacing*5;
     }
@@ -28,7 +28,7 @@
         max-width: ($breakpoint - 0.02 + 30);
       }
 
-      @include bp-up(xl) {
+      @include bp-up(xx) {
         max-width: ($breakpoint - 0.02 + 50);
       }
     }

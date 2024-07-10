@@ -6,12 +6,16 @@
 html,
 body {
   width: 100%;
+}
+
+html {
   background-color: $black;
 }
 
 body {
   position: relative !important;
   @include body;
+  background-color: $white;
   color: $black;
 }
 
@@ -21,10 +25,9 @@ body.stop-transitions * {
 
 #page {
   position: relative;
-  background-color: $white;
+  opacity: 0;
 }
 
-// a:not(.button):not(.btn) {
 a:not(a[class]){
   cursor: pointer;
   color: currentColor;

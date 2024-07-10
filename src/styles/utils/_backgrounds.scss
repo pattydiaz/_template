@@ -8,7 +8,7 @@
 
     img {
       object-position: var(--position, 50% 50%);
-    } 
+    }
   }
 
   &-inline {
@@ -19,10 +19,11 @@
   }
 
   &--overlay {
+
     &:after {
       content: '';
       @include cover;
-      background-color: $black;
+      background-color: var(--bg, $black);
       opacity: var(--opacity, .4);
       pointer-events: none;
       z-index: 1;

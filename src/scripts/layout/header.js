@@ -5,46 +5,48 @@ var Header = {
     Header.build();
   },
   build: function () {
-    if (header.is(":visible")) Header.height();
-    Header.scroll();
+    if (header.is(":visible")) {
+      Header.height();
+      Header.scroll();
+    }
   },
   height: function () {
     var hh = header.outerHeight();
-    wrapper.css("padding-top", hh);
     body.get(0).style.setProperty("--hh", hh + "px");
 
     w.on("resize", function () {
       hh = header.outerHeight();
-      wrapper.css("padding-top", hh);
       body.get(0).style.setProperty("--hh", hh + "px");
     });
   },
   scroll: function () {
-    var ph = page.outerHeight();
 
-    var headerAnim = gsap
-      .to(header, { duration: 0.4, y: "-100%", ease: "circ.inOut" })
-      .reverse();
+    var header_anim = gsap.timeline({
+      paused: true,
+      scrollTrigger: {
+        // markers: true,
+        trigger: body,
+        start: '0 0',
+        end: '100% 0',
+        onUpdate: (self) => {
+          self.progress > 0.01 
+            ? header.addClass("header--scroll") 
+            : header.removeClass("header--scroll");
 
-    var headerScene = new ScrollMagic.Scene({
-      triggerElement: $("section").first(),
-      duration: ph,
-      offset: 0,
+          if (self.progress > 0.01 && self.direction == 1 && !body.hasClass("nav-active"))
+            header_anim.play();
+
+          if (self.direction == -1 && !body.hasClass("nav-active"))
+            header_anim.reverse();
+        }
+      },
     });
 
-    // headerScene.addIndicators();
-    headerScene.triggerHook(0);
-    headerScene.addTo(controller);
-
-    headerScene.on("progress", function (e) {
-      e.progress > 0.01 ? header.addClass("header--scroll") : header.removeClass("header--scroll");
-      
-      if (e.progress > 0.01 && e.scrollDirection == "FORWARD" && !body.hasClass("nav-active"))
-        if(header.find('.has-sublist:hover').length == 0)
-          headerAnim.play();
-
-      if (e.scrollDirection == "REVERSE" && !body.hasClass("nav-active"))
-        headerAnim.reverse();
+    header_anim.to(header, {
+      y: '-100%',
+      duration: 0.3,
+      ease: 'power2.inOut'
     });
+
   },
 };

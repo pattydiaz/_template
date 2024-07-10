@@ -16,4 +16,8 @@
   &-contain {
     @include object-fit(contain);
   }
+
+  &-fix {
+    @include pixel-fix;
+  }
 }

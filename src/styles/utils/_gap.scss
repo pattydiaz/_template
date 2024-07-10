@@ -1,27 +1,84 @@
+$gaps: (
+  "xs": $spacing*3,
+  "sm": $spacing*5,
+  "md": $spacing*10,
+  "lg": $spacing*15,
+  "xl": $spacing*20,
+  "xx": $spacing*25,
+);
+
 .gap {
-  &-t {
-    padding-top: $spacing*5;
+  $self: &;
 
-    // @include bp-between(md,xx) {
-    //   // padding-top: 7%;
-    // }
-
-    @include bp-up(max) {
-      padding-top: 4%;
-      // padding-top: $spacing*10;
-    }
+  &-hh {
+    padding-top: var(--hh, 70px);
   }
+
+  @each $name, $gap in $gaps {
+    &-y--#{$name} {
+      padding-top: #{$gap};
+      padding-bottom: #{$gap};
+    }
   
-  &-b {
-    padding-bottom: $spacing*5;
-    
-    // @include bp-between(md,xx) {
-    //   padding-bottom: 7%;
-    // }
+    &-t--#{$name} {
+      padding-top: #{$gap};
+    }
+  
+    &-b--#{$name} {
+      padding-bottom: #{$gap};
+    }
 
-    @include bp-up(max) {
-      padding-bottom: 4%;
-      // padding-bottom: $spacing*10;
+    &-ym--#{$name} {
+      padding-top: calc(#{$gap} / 2.5);
+      padding-bottom: calc(#{$gap} / 2.5);
+
+      @include bp-up(md) {
+        padding-top: #{$gap};
+        padding-bottom: #{$gap};
+      }
+    }
+  
+    &-tm--#{$name} {
+      padding-top: calc(#{$gap} / 2.5);
+
+      @include bp-up(md) {
+        padding-top: #{$gap};
+      }
+    }
+  
+    &-bm--#{$name} {
+      padding-bottom: calc(#{$gap} / 2.5);
+
+      @include bp-up(md) {
+        padding-bottom: #{$gap};
+      }
+    }
+
+    &-yd--#{$name} {
+      @include bp-up(md) {
+        padding-top: #{$gap};
+        padding-bottom: #{$gap};
+      }
+    }
+  
+    &-td--#{$name} {
+      @include bp-up(md) {
+        padding-top: #{$gap};
+      }
+    }
+  
+    &-bd--#{$name} {
+      @include bp-up(md) {
+        padding-bottom: #{$gap};
+      }
     }
   }
+
 }
+
+// [class*="gap-y"] {
+
+//   + [class*="gap-t"] {
+//     padding-top: 0;
+//   }
+// }

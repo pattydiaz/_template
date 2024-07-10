@@ -4,62 +4,40 @@ var Scrolling = {
   },
   build: function() {
     Scrolling.animate();
-    Scrolling.anchor();
     Scrolling.fix();
   },
   animate: function() {
-    $('.animated, .animated-reverse').each(function() {
+    var animated = $('.animated');
+
+    animated.each(function(){
       var $this = $(this);
-      var $height = $this.outerHeight();
+      var delay = $this.data('delay') !== undefined ? $this.data('delay') : 0;
+      var offset = $this.data('offset') !== undefined ? $this.data('offset') : 0;
 
-      var scrollingScene = new ScrollMagic.Scene({
-        triggerElement: $this[0],
-        duration: $height,
-      });
-
-      // scrollingScene.addIndicators();
-      scrollingScene.triggerHook(0.6);
-      scrollingScene.addTo(controller);
-
-      if($this.data('offset'))
-        scrollingScene.offset($this.data('offset'));
-
-      scrollingScene.on('enter', function(e) {
-        if($this.hasClass('animated-reverse') && e.scrollDirection == "FORWARD") {
-          $this.addClass('active-reverse');
-        } else {
-
-          if($this.data('delay')) {
-            setTimeout(function(){
-              $this.addClass('active');
-            }, $this.data('delay'));
-          } else {
-            $this.addClass('active');
-          }
-          
+      ScrollTrigger.create({
+        // markers: true,
+        trigger: $this,
+        start: offset+' 60%',
+        end: "+="+$this.outerHeight(),
+        onEnter: () => {
+          $this.hasClass('animated-reverse') 
+            ? setTimeout(() => { $this.addClass('active-reverse'); }, delay)
+            : setTimeout(() => { $this.addClass('active'); }, delay);
+        },
+        onLeaveBack: () => {
+          if($this.hasClass('animated-reverse'))
+            setTimeout(() => { $this.removeClass('active-reverse'); }, delay);
         }
       });
-
-      scrollingScene.on('leave',function(e){
-        if($this.hasClass('animated-reverse') && e.scrollDirection == "REVERSE")
-          $this.removeClass('active-reverse');
-      });
-
     });
   },
-  anchor: function() {
-    $(".btn-anchor").each(function () {
-      $(this).on("click", function (e) {
-        e.preventDefault();
-        var id = $(this).attr("href");
-        $("html, body").animate({ 
-          scrollTop: $(id).parents('section').offset().top - header.outerHeight() 
-        }, 500);
-      });
-    });
-  },
-  lock: function() {
-    $('html, body').css('overflow','hidden');
+  lock: function(delay) {
+    var timeout = delay;
+    if(timeout == undefined) timeout = 0;
+
+    setTimeout(() => {
+      $('html, body').css('overflow','hidden');
+    }, timeout);
   },
   unlock: function() {
     $('html, body').css('overflow','');
@@ -73,4 +51,4 @@ var Scrolling = {
       });
     }
   }
-}
+};

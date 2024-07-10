@@ -1,8 +1,16 @@
 .parallax {
+  $self: &;
+
   &-item {
-    transform: translate3d(0,0,0);
-    backface-visibility: hidden;
-    will-change: transform;
-    perspective: 1000;
+    @include transform-fix;
+    // will-change: transform;
+  }
+
+  &-zoom {
+    overflow: hidden;
+
+    img {
+      height: 115% !important;
+    }
   }
 }

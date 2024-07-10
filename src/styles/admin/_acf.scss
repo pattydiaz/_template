@@ -1,13 +1,12 @@
 .acf {
   &-fields {
     >.acf-field {
+      padding-top: $spacing !important;
+      padding-bottom: $spacing !important;
 
       .acf-label {
         .description {
-          font-style: $fs-italic;
-          font-size: 90%;
-          opacity: .75;
-          color: red;
+          @include wp-admin;
         }
       }
 
@@ -22,12 +21,102 @@
           max-width: 150px !important;
         }
       }
+
+      .acf-gallery {
+        height: 300px !important;
+      }
+
+      .acf-field-clone {
+        padding: 0 !important;
+        border: none !important;
+
+        > .acf-label {
+          display: none;
+        }
+
+        > .acf-input {
+          > .acf-fields {
+            border: none;
+
+            >.acf-field {
+              &.-r0 {
+                border-top-width: 1px !important;
+                border-top-style: solid !important;
+                border-top-color: #EAECF0 !important;
+              }
+            }
+          }
+        }
+      }
+
+      &.acf-accordion {
+        
+        .acf-accordion-title {
+          background-color: #f3f4f5;
+
+          &:hover {
+            background-color: #e5e7e9;
+          }
+
+          .acf-accordion-icon {
+            float: none;
+          }
+
+          label {
+            display: inline-block;
+          }
+          
+        }
+
+        &.-open {
+          .acf-accordion-title {}
+        }
+      }
+
+      &.acf-field-message {
+
+        + .acf-field {
+          border-top: none;
+        }
+
+        .acf-input {
+          @include wp-admin;
+
+          ul {
+            padding-left: $spacing*1.2;
+            list-style-type: disc;
+
+            li {
+              margin-bottom: 2px;
+            }
+          }
+        }
+      }
+
+      &.mce-small {
+        iframe,
+        textarea {
+          height: 120px !important;
+          min-height: 120px !important;
+        }
+      }
     }
   }
 
   &-range-wrap {
     input[type=number] {
       min-width: 4em !important;
+    }
+  }
+
+  &-tab-wrap {
+    overflow: hidden;
+
+    .acf-tab-group {
+      margin-bottom: 0 !important;
+      overflow: hidden !important;
+      border-bottom: none !important;
+      background-color: #ffffff;
     }
   }
 
@@ -40,4 +129,21 @@
       }
     }
   }
+
+  &-flexible-content {
+    .acf-flexible-content {
+      .acf-fc-layout-handle {
+        background-color: #f3f4f5;
+        
+        &:hover {
+          background-color: #e5e7e9;
+        }
+      }
+    }
+  }
+}
+
+// [FORCE] Hide Content Editor 
+#acf-group_6451a05839d05 {
+  display: none !important;
 }

@@ -2,10 +2,45 @@
 #adminmenu .wp-submenu,
 #adminmenuback,
 #adminmenuwrap {
-  width: 170px;
+  width: 190px;
+}
+
+#adminmenu .wp-submenu {
+  left: 190px;
+}
+
+#wpcontent {
+  position: relative;
 }
 
 #wpcontent,
 #wpfooter {
-  margin-left: 170px;
+  margin-left: 190px;
+}
+
+#wpcontent .banner {
+  padding-left: $spacing*1.5;
+  padding-right: $spacing*1.5;
+  padding-top: $spacing*1.5;
+  padding-bottom: $spacing*1.5;
+  margin-top: $spacing;
+  margin-bottom: $spacing*1.5;
+  border-left: 4px solid;
+  background-color: $white;
+  font-style: $fs-italic;
+  color: $black-transparent;
+
+  &.banner-help {
+    border-color: $black;
+  }
+
+  &.banner-error {
+    border-color: $error;
+  }
+}
+
+#postimagediv {
+  .inside {
+    @include wp-admin;
+  }
 }

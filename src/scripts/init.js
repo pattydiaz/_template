@@ -1,22 +1,38 @@
 var Project = {
   init: function() {
-    Loader.init();
-    // Agegate.init();
-    Header.init();
-    Navigation.init();
-
     Buttons.init();
-    Inputs.init();
-    Video.init();
     Parallax.init();
-    Slider.init();
-    Filter.init();
-    Newsletter.init();
+    Inputs.init();
+    // Video.init();
+    // Slider.init();
+    // Newsletter.init();
+    // Background.init();
+    // Panel.init();
+    // Tabs.init();
+    // Accordion.init();
+
+    Header.init();
+    // Navigation.init();
+    // Modal.init();
+    // Consent.init();
+
+    // Hero.init();
   }
 };
 
-Page.init();
 
-$(function(){
-  Project.init();
+
+$(function() {
+  
+  w.on('load',function(){
+    loaded = true;
+    
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0,0);
+
+    Page.init();
+    Wrapper.init();
+    Project.init();
+
+  });
 });

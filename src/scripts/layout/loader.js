@@ -5,15 +5,27 @@ var Loader = {
     Loader.build();
   },
   build: function() {
-    loader.is(':visible') ? Loader.animate() : Loader.default();
+    loader.is(':visible') ? Loader.primary() : Loader.fallback();
   },
-  default: function() {
-    body.addClass('loaded');
-    Scrolling.init();
-    Scrolling.unlock();
+  primary: function(){
+    Scrolling.lock();
+    
+    var loader_anim = gsap.timeline();
   },
-  animate: function() {
-    // Scrolling.lock();
-    // var loaderAnimation = gsap.timeline();
+  fallback: function() {
+    Scrolling.lock();
+    Loader.animate();
+  },
+  animate: function(delay) {
+    var time = delay !== undefined ? delay : 0;
+
+    setTimeout(() => {
+
+      lazyload = new LazyLoad(lazyloadSettings);
+      body.addClass('loaded');
+      Scrolling.init();
+      Scrolling.unlock();
+      
+    }, time);
   }
-}
+};
