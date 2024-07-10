@@ -1,4 +1,4 @@
-# Terminal Shortcuts
+# Terminal Command Shortcuts
 Cheat sheet of shortcuts to assist with common development tasks.
 
 ## Setup
