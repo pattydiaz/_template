@@ -7,7 +7,7 @@
 
 
 
-// Add "Vendor" featured image instructions
+// Add "Product" featured image instructions
 add_filter('admin_post_thumbnail_html', function($html) {
 
   if(get_post_type() == 'product')
