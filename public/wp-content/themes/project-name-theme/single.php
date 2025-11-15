@@ -15,7 +15,7 @@ get_header();
   <?php
     if (!post_password_required($post)) :
 
-      get_template_part(TP.'hero','post');
+      get_template_part(TP.'default','hero');
 
       if( have_rows('post-blocks') ): 
         while( have_rows('post-blocks') ): the_row();

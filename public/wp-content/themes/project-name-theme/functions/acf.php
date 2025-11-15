@@ -5,41 +5,8 @@
  * @package Project Name Theme
 */
 
-if( function_exists('acf_add_options_page') ) {
-		
-  acf_add_options_sub_page(array(
-    'page_title' 	=> 'Global',
-    'menu_title'	=> 'Global',
-    'menu_slug'	    => 'global',
-        'capability'	=> 'edit_posts',
-        'parent_slug'   => 'themes.php',
-        'position'      => false,
-        'icon_url'      => false
-  ));
-  
-	// acf_add_options_sub_page(array(
-	// 	'page_title' 	=> 'Menus',
-	// 	'menu_title'	=> 'Menus',
-	// 	'menu_slug'	    => 'menu',
-  //       'capability'	=> 'edit_posts',
-  //       'parent_slug'   => 'themes.php',
-  //       'position'      => false,
-  //       'icon_url'      => false
-	// ));
-  
-	// acf_add_options_sub_page(array(
-	// 	'page_title' 	=> 'Content Blocks',
-	// 	'menu_title'	=> 'Content Blocks',
-	// 	'menu_slug'	    => 'blocks',
-  //       'capability'	=> 'edit_posts',
-  //       'parent_slug'   => 'themes.php',
-  //       'position'      => false,
-  //       'icon_url'      => false
-	// ));
 
-}
-
-
+// Customize WYSIWYG toolbars
 add_filter('acf/fields/wysiwyg/toolbars', function($toolbars) {
   global $editor_toolbar1, $editor_toolbar2, $basic_toolbar1;
 
@@ -62,3 +29,66 @@ add_filter( 'acf/fields/relationship/query',function($options, $field, $the_post
 
   return $options;
 }, 10, 3);
+
+
+// Show field set on password protected pages
+add_filter('acf/location/rule_types', function($choices){
+  $choices['Post']['visibility'] = 'Post Visibility';
+  return $choices;
+});
+
+add_filter('acf/location/rule_values/visibility', function($choices){
+  //var_dump($choices);
+  $choices['password'] = 'Password Protected';
+  return $choices;
+});
+
+add_filter('acf/location/rule_match/visibility', function($match, $rule, $options){
+  if ( is_object($options) && isset($options->post_id) ) { $post_id = $options->post_id;} 
+  elseif ( is_array($options) && isset($options['post_id']) ) { $post_id = $options['post_id'];} 
+  else { return false; }
+  
+  $the_post = get_post($post_id);
+  
+  if ( $the_post && !empty($the_post->post_password) ) { $match = true; } 
+  else { $match = false; }
+  
+  return $match;
+
+}, 10, 3);
+
+
+// Extract Text Content from All ACF Flexible Blocks for Yoast
+add_filter('wpseo_pre_analysis_post_content', function ($content) {
+  if (!is_singular()) { return $content; }
+
+  $post_id = get_the_ID();
+  
+  // Define the flexible content field names you want to include
+  $acf_blocks = ['custom-blocks', 'vendor-blocks', 'post-blocks'];
+
+  foreach ($acf_blocks as $acf_field) {
+    $flexible_content = get_field($acf_field, $post_id);
+
+    if ($flexible_content && is_array($flexible_content)) {
+      $content .= extract_text_from_acf($flexible_content);
+    }
+  }
+
+  return $content;
+}, 10, 1);
+
+// Recursive extractor for ACF fields
+function extract_text_from_acf($fields) {
+  $output = '';
+
+  foreach ($fields as $field) {
+    if (is_array($field)) {
+      $output .= extract_text_from_acf($field); // Recurse deeper
+    } elseif (is_string($field)) {
+      $output .= ' ' . strip_tags($field); // Append text content
+    }
+  }
+
+  return $output;
+}

@@ -1,0 +1,1485 @@
+[
+    {
+        "key": "group_6451a05839d05",
+        "title": "[FORCE] Hide Content Editor",
+        "fields": [
+            {
+                "key": "field_6451a0588d23e",
+                "label": "",
+                "name": "",
+                "aria-label": "",
+                "type": "message",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "",
+                "new_lines": "wpautop",
+                "esc_html": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "page-custom.php"
+                }
+            ],
+            [
+                {
+                    "param": "page",
+                    "operator": "==",
+                    "value": "26"
+                }
+            ]
+        ],
+        "menu_order": -9999,
+        "position": "acf_after_title",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": [
+            "the_content"
+        ],
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_680bd63fdbc49",
+        "title": "Custom Page",
+        "fields": [
+            {
+                "key": "field_680bd6efeec0d",
+                "label": "Section Blocks",
+                "name": "custom-blocks",
+                "aria-label": "",
+                "type": "flexible_content",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layouts": {
+                    "layout_686c0b58cef7c": {
+                        "key": "layout_686c0b58cef7c",
+                        "name": "hero",
+                        "label": "Hero",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_686c0b58cef7f",
+                                "label": "Section ID",
+                                "name": "id-clone",
+                                "aria-label": "",
+                                "type": "clone",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "clone": [
+                                    "group_67b3cf9ca8200"
+                                ],
+                                "display": "seamless",
+                                "layout": "block",
+                                "prefix_label": 0,
+                                "prefix_name": 0
+                            },
+                            {
+                                "key": "field_686c0b58cef80",
+                                "label": "Hero",
+                                "name": "hero-clone",
+                                "aria-label": "",
+                                "type": "clone",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "clone": [
+                                    "group_680fc0d66b999"
+                                ],
+                                "display": "seamless",
+                                "layout": "block",
+                                "prefix_label": 0,
+                                "prefix_name": 0
+                            }
+                        ],
+                        "min": "",
+                        "max": "1"
+                    },
+                    "layout_686ca6ae0fb94": {
+                        "key": "layout_686ca6ae0fb94",
+                        "name": "media",
+                        "label": "Media",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_686ca6ae0fb97",
+                                "label": "Section ID",
+                                "name": "id-clone",
+                                "aria-label": "",
+                                "type": "clone",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "clone": [
+                                    "group_67b3cf9ca8200"
+                                ],
+                                "display": "seamless",
+                                "layout": "block",
+                                "prefix_label": 0,
+                                "prefix_name": 0
+                            },
+                            {
+                                "key": "field_686ca6ae0fb98",
+                                "label": "Media",
+                                "name": "media-clone",
+                                "aria-label": "",
+                                "type": "clone",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "clone": [
+                                    "group_68115cc8b1019"
+                                ],
+                                "display": "seamless",
+                                "layout": "block",
+                                "prefix_label": 0,
+                                "prefix_name": 0
+                            }
+                        ],
+                        "min": "",
+                        "max": ""
+                    }
+                },
+                "min": 1,
+                "max": "",
+                "button_label": "Add Section Block"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "page-custom.php"
+                }
+            ]
+        ],
+        "menu_order": -100,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": [
+            "the_content",
+            "excerpt",
+            "discussion",
+            "comments",
+            "categories",
+            "tags",
+            "send-trackbacks"
+        ],
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_680bfeecd1a6f",
+        "title": "Global Options",
+        "fields": [
+            {
+                "key": "field_680bff238032e",
+                "label": "General",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0,
+                "selected": 0
+            },
+            {
+                "key": "field_689bc0179d788",
+                "label": "Address",
+                "name": "address",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_689bc0af9d789",
+                "label": "Phone Number",
+                "name": "phone",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "928-000-0000",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_680bffa7ddc21",
+                "label": "Email Address",
+                "name": "email",
+                "aria-label": "",
+                "type": "email",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_680bff068032d",
+                "label": "Social Media",
+                "name": "",
+                "aria-label": "",
+                "type": "tab",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "placement": "top",
+                "endpoint": 0,
+                "selected": 0
+            },
+            {
+                "key": "field_680c03813c153",
+                "label": "Social Media",
+                "name": "social",
+                "aria-label": "",
+                "type": "repeater",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "layout": "block",
+                "pagination": 0,
+                "min": 0,
+                "max": 0,
+                "collapsed": "",
+                "button_label": "Add Social Media",
+                "rows_per_page": 20,
+                "sub_fields": [
+                    {
+                        "key": "field_680c03943c154",
+                        "label": "Social Channel",
+                        "name": "social-channel",
+                        "aria-label": "",
+                        "type": "select",
+                        "instructions": "",
+                        "required": 0,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "choices": {
+                            "facebook": "Facebook",
+                            "instagram": "Instagram",
+                            "linkedin": "Linkedin",
+                            "pinterest": "Pinterest",
+                            "tiktok": "TikTok",
+                            "twitter": "Twitter",
+                            "vimeo": "Vimeo",
+                            "x": "X",
+                            "youtube": "YouTube"
+                        },
+                        "default_value": false,
+                        "return_format": "array",
+                        "multiple": 0,
+                        "allow_null": 0,
+                        "allow_in_bindings": 0,
+                        "ui": 0,
+                        "ajax": 0,
+                        "placeholder": "",
+                        "create_options": 0,
+                        "save_options": 0,
+                        "parent_repeater": "field_680c03813c153"
+                    },
+                    {
+                        "key": "field_680c03b63c155",
+                        "label": "Social URL",
+                        "name": "social-url",
+                        "aria-label": "",
+                        "type": "url",
+                        "instructions": "",
+                        "required": 1,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "50",
+                            "class": "",
+                            "id": ""
+                        },
+                        "default_value": "",
+                        "allow_in_bindings": 0,
+                        "placeholder": "",
+                        "parent_repeater": "field_680c03813c153"
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "global"
+                }
+            ]
+        ],
+        "menu_order": -100,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_680bcd260bcbc",
+        "title": "[DEV] Template Slug",
+        "fields": [
+            {
+                "key": "field_680bcd267b8c1",
+                "label": "Template Slug",
+                "name": "template-slug",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "page-custom.php"
+                },
+                {
+                    "param": "current_user_role",
+                    "operator": "==",
+                    "value": "developer"
+                }
+            ]
+        ],
+        "menu_order": 50,
+        "position": "acf_after_title",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_67b62be38aacf",
+        "title": "[C] Background Media",
+        "fields": [
+            {
+                "key": "field_67b62be38c7b1",
+                "label": "Background Image",
+                "name": "background-img",
+                "aria-label": "",
+                "type": "image",
+                "instructions": "Background Image is required as fallback for videos.<br>\r\nJPG, JPEG only. Max size 1 MB.",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33.333",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": 1,
+                "mime_types": "jpg, jpeg",
+                "allow_in_bindings": 1,
+                "preview_size": "thumbnail"
+            },
+            {
+                "key": "field_67b62be38c7c9",
+                "label": "Background Position (L\/R)",
+                "name": "background-x",
+                "aria-label": "",
+                "type": "range",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33.333",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 50,
+                "min": 0,
+                "max": 100,
+                "allow_in_bindings": 1,
+                "step": 5,
+                "prepend": "",
+                "append": "%"
+            },
+            {
+                "key": "field_67b62be38c7d0",
+                "label": "Background Position (T\/B)",
+                "name": "background-y",
+                "aria-label": "",
+                "type": "range",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "33.333",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 50,
+                "min": 0,
+                "max": 100,
+                "allow_in_bindings": 1,
+                "step": 5,
+                "prepend": "",
+                "append": "%"
+            },
+            {
+                "key": "field_68b781da6f003",
+                "label": "Background Overlay Opacity",
+                "name": "background-overlay",
+                "aria-label": "",
+                "type": "range",
+                "instructions": "Controls a black overlay on the background: 0 is fully transparent, 1 is solid black.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 0,
+                "min": 0,
+                "max": 1,
+                "allow_in_bindings": 0,
+                "step": "0.05",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_689d0f66c063a",
+                "label": "Background Options",
+                "name": "background-options",
+                "aria-label": "",
+                "type": "checkbox",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "mobile": "Add Mobile Image",
+                    "video": "Add Looping Video"
+                },
+                "default_value": [],
+                "return_format": "value",
+                "allow_custom": 0,
+                "allow_in_bindings": 0,
+                "layout": "horizontal",
+                "toggle": 1,
+                "save_custom": 0,
+                "custom_choice_button_text": "Add new choice"
+            },
+            {
+                "key": "field_689b977d0b27d",
+                "label": "Background Image (Mobile)",
+                "name": "background-mobile",
+                "aria-label": "",
+                "type": "image",
+                "instructions": "If no image is selected, the Background Image will be used by default.<br>\r\nJPG, JPEG only. Max size 1 MB.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_689d0f66c063a",
+                            "operator": "==",
+                            "value": "mobile"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "33.333",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": 1,
+                "mime_types": "jpg, jpeg",
+                "allow_in_bindings": 1,
+                "preview_size": "thumbnail"
+            },
+            {
+                "key": "field_689d0e060079f",
+                "label": "Background (Mobile) Position (L\/R)",
+                "name": "background-x-mobile",
+                "aria-label": "",
+                "type": "range",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_689d0f66c063a",
+                            "operator": "==",
+                            "value": "mobile"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "33.333",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 50,
+                "min": 0,
+                "max": 100,
+                "allow_in_bindings": 1,
+                "step": 5,
+                "prepend": "",
+                "append": "%"
+            },
+            {
+                "key": "field_689d0e0c007a0",
+                "label": "Background (Mobile) Position (T\/B)",
+                "name": "background-y-mobile",
+                "aria-label": "",
+                "type": "range",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_689d0f66c063a",
+                            "operator": "==",
+                            "value": "mobile"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "33.333",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 50,
+                "min": 0,
+                "max": 100,
+                "allow_in_bindings": 1,
+                "step": 5,
+                "prepend": "",
+                "append": "%"
+            },
+            {
+                "key": "field_67b62be38c7ba",
+                "label": "Background Looping Video",
+                "name": "background-loop",
+                "aria-label": "",
+                "type": "file",
+                "instructions": "Video displays only on desktop devices.<br>\r\nMP4 only. Max file size 10 MB.",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_689d0f66c063a",
+                            "operator": "==",
+                            "value": "video"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "33.333",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "library": "all",
+                "min_size": "",
+                "max_size": 10,
+                "mime_types": "mp4",
+                "allow_in_bindings": 1
+            },
+            {
+                "key": "field_689d0e70007a1",
+                "label": "Background Video Position (L\/R)",
+                "name": "background-x-loop",
+                "aria-label": "",
+                "type": "range",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_689d0f66c063a",
+                            "operator": "==",
+                            "value": "video"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "33.333",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 50,
+                "min": 0,
+                "max": 100,
+                "allow_in_bindings": 1,
+                "step": 5,
+                "prepend": "",
+                "append": "%"
+            },
+            {
+                "key": "field_689d0e76007a2",
+                "label": "Background Video Position (T\/B)",
+                "name": "background-y-loop",
+                "aria-label": "",
+                "type": "range",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_689d0f66c063a",
+                            "operator": "==",
+                            "value": "video"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "33.333",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 50,
+                "min": 0,
+                "max": 100,
+                "allow_in_bindings": 1,
+                "step": 5,
+                "prepend": "",
+                "append": "%"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "block",
+                    "operator": "==",
+                    "value": ""
+                }
+            ]
+        ],
+        "menu_order": 100,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": false,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_6836664207315",
+        "title": "[C] Container",
+        "fields": [
+            {
+                "key": "field_683666420a9b3",
+                "label": "Container",
+                "name": "container",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "none": "None",
+                    "xs": "X-Small",
+                    "sm": "Small",
+                    "md": "Medium",
+                    "lg": "Large",
+                    "xl": "X-Large",
+                    "xx": "XX-Large",
+                    "max": "Max"
+                },
+                "default_value": "xx",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "allow_in_bindings": 1,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": "",
+                "create_options": 0,
+                "save_options": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "block",
+                    "operator": "==",
+                    "value": ""
+                }
+            ]
+        ],
+        "menu_order": 100,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": false,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_67b3cf9ca8200",
+        "title": "[C] ID",
+        "fields": [
+            {
+                "key": "field_67b3cf9cac780",
+                "label": "Section ID",
+                "name": "id",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 1,
+                "placeholder": "Single word, all lowercase, no spaces. Underscores and dashes allowed. Must be unique.",
+                "prepend": "",
+                "append": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "block",
+                    "operator": "==",
+                    "value": ""
+                }
+            ]
+        ],
+        "menu_order": 100,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": false,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_689f7356c206b",
+        "title": "[C] Media",
+        "fields": [
+            {
+                "key": "field_689f7356c3a04",
+                "label": "Image",
+                "name": "media-img",
+                "aria-label": "",
+                "type": "image",
+                "instructions": "Background Image is required as fallback for videos.<br>\r\nJPG, JPEG only. Max size 1 MB.",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": 1,
+                "mime_types": "jpg, jpeg",
+                "allow_in_bindings": 1,
+                "preview_size": "thumbnail"
+            },
+            {
+                "key": "field_689f7356c3a3a",
+                "label": "Looping Video",
+                "name": "media-loop",
+                "aria-label": "",
+                "type": "file",
+                "instructions": "MP4 only. Max file size 5 MB.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "library": "all",
+                "min_size": "",
+                "max_size": 5,
+                "mime_types": "mp4",
+                "allow_in_bindings": 1
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "block",
+                    "operator": "==",
+                    "value": ""
+                }
+            ]
+        ],
+        "menu_order": 100,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": false,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_65b43fdade009",
+        "title": "[C] Spacing",
+        "fields": [
+            {
+                "key": "field_65b43ff2926ba",
+                "label": "Spacing Top",
+                "name": "spacing-top",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "none": "None",
+                    "xs": "X-Small",
+                    "sm": "Small",
+                    "md": "Medium",
+                    "lg": "Large",
+                    "xl": "X-Large",
+                    "xx": "XX-Large"
+                },
+                "default_value": "none",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": "",
+                "create_options": 0,
+                "save_options": 0
+            },
+            {
+                "key": "field_65b44059926bb",
+                "label": "Spacing Bottom",
+                "name": "spacing-bottom",
+                "aria-label": "",
+                "type": "select",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "none": "None",
+                    "xs": "X-Small",
+                    "sm": "Small",
+                    "md": "Medium",
+                    "lg": "Large",
+                    "xl": "X-Large",
+                    "xx": "XX-Large"
+                },
+                "default_value": "none",
+                "return_format": "value",
+                "multiple": 0,
+                "allow_null": 0,
+                "ui": 0,
+                "ajax": 0,
+                "placeholder": "",
+                "create_options": 0,
+                "save_options": 0
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "block",
+                    "operator": "==",
+                    "value": ""
+                }
+            ]
+        ],
+        "menu_order": 100,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": false,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_680fc0d66b999",
+        "title": "[M] Hero",
+        "fields": [
+            {
+                "key": "field_680fc8231f0cc",
+                "label": "General Options",
+                "name": "",
+                "aria-label": "",
+                "type": "accordion",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "open": 0,
+                "multi_expand": 0,
+                "endpoint": 0
+            },
+            {
+                "key": "field_689d0be57430c",
+                "label": "Section Size",
+                "name": "section-size",
+                "aria-label": "",
+                "type": "radio",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "choices": {
+                    "100": "Fullscreen",
+                    "75": "Three-quarters",
+                    "50": "Half"
+                },
+                "default_value": 100,
+                "return_format": "value",
+                "allow_null": 0,
+                "other_choice": 0,
+                "allow_in_bindings": 0,
+                "layout": "horizontal",
+                "save_other_choice": 0
+            },
+            {
+                "key": "field_689d0b8a7430b",
+                "label": "Background Media",
+                "name": "background-clone",
+                "aria-label": "",
+                "type": "clone",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "clone": [
+                    "group_67b62be38aacf"
+                ],
+                "display": "seamless",
+                "layout": "block",
+                "prefix_label": 0,
+                "prefix_name": 0
+            },
+            {
+                "key": "field_680fc8651f0cd",
+                "label": "Hero Options",
+                "name": "",
+                "aria-label": "",
+                "type": "accordion",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "open": 0,
+                "multi_expand": 0,
+                "endpoint": 0
+            },
+            {
+                "key": "field_680fcd972f3b4",
+                "label": "Title",
+                "name": "hero-title",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "If no title is provided, the page title will be used by default.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": 50,
+                "allow_in_bindings": 0,
+                "placeholder": "Limit of 50 characters",
+                "prepend": "",
+                "append": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "block",
+                    "operator": "==",
+                    "value": ""
+                }
+            ]
+        ],
+        "menu_order": 200,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": false,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_68115cc8b1019",
+        "title": "[M] Media",
+        "fields": [
+            {
+                "key": "field_68115cc8b5cd9",
+                "label": "General Options",
+                "name": "",
+                "aria-label": "",
+                "type": "accordion",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "open": 0,
+                "multi_expand": 0,
+                "endpoint": 0
+            },
+            {
+                "key": "field_68115cc8b5ce3",
+                "label": "Spacing",
+                "name": "spacing-clone",
+                "aria-label": "",
+                "type": "clone",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "clone": [
+                    "group_65b43fdade009"
+                ],
+                "display": "seamless",
+                "layout": "block",
+                "prefix_label": 0,
+                "prefix_name": 0
+            },
+            {
+                "key": "field_686e24720ade7",
+                "label": "Container",
+                "name": "container-clone",
+                "aria-label": "",
+                "type": "clone",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "clone": [
+                    "group_6836664207315"
+                ],
+                "display": "seamless",
+                "layout": "block",
+                "prefix_label": 0,
+                "prefix_name": 0
+            },
+            {
+                "key": "field_68115cc8b5cfb",
+                "label": "Media Options",
+                "name": "",
+                "aria-label": "",
+                "type": "accordion",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "open": 0,
+                "multi_expand": 0,
+                "endpoint": 0
+            },
+            {
+                "key": "field_681162efbcb30",
+                "label": "Image",
+                "name": "media-img",
+                "aria-label": "",
+                "type": "image",
+                "instructions": "Image is required as fallback for videos.<br>\r\nRecommended ratio: <strong>16:10<\/strong><br>\r\nJPG, JPEG only. Max size 1 MB.",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "library": "all",
+                "min_width": "",
+                "min_height": "",
+                "min_size": "",
+                "max_width": "",
+                "max_height": "",
+                "max_size": 1,
+                "mime_types": "jpg, jpeg",
+                "allow_in_bindings": 1,
+                "preview_size": "thumbnail"
+            },
+            {
+                "key": "field_681162efbcb57",
+                "label": "Looping Video",
+                "name": "media-loop",
+                "aria-label": "",
+                "type": "file",
+                "instructions": "MP4 only. Max file size 10 MB.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "library": "all",
+                "min_size": "",
+                "max_size": 10,
+                "mime_types": "mp4",
+                "allow_in_bindings": 1
+            },
+            {
+                "key": "field_681162efbcb81",
+                "label": "Position (L\/R)",
+                "name": "media-position-x",
+                "aria-label": "",
+                "type": "range",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 50,
+                "min": 0,
+                "max": 100,
+                "allow_in_bindings": 1,
+                "step": 5,
+                "prepend": "",
+                "append": "%"
+            },
+            {
+                "key": "field_681162efbcba7",
+                "label": "Position (T\/B)",
+                "name": "media-position-y",
+                "aria-label": "",
+                "type": "range",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": 50,
+                "min": 0,
+                "max": 100,
+                "allow_in_bindings": 1,
+                "step": 5,
+                "prepend": "",
+                "append": "%"
+            },
+            {
+                "key": "field_68ba0f1760b16",
+                "label": "",
+                "name": "media-option-fullscreen",
+                "aria-label": "",
+                "type": "true_false",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "Force media fullscreen",
+                "default_value": 0,
+                "allow_in_bindings": 0,
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_68ba0eef60b15",
+                "label": "",
+                "name": "media-option-caption",
+                "aria-label": "",
+                "type": "true_false",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "50",
+                    "class": "",
+                    "id": ""
+                },
+                "message": "Include caption",
+                "default_value": 0,
+                "allow_in_bindings": 0,
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            },
+            {
+                "key": "field_68ba009eff2aa",
+                "label": "Caption",
+                "name": "media-caption",
+                "aria-label": "",
+                "type": "textarea",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": [
+                    [
+                        {
+                            "field": "field_68ba0eef60b15",
+                            "operator": "==",
+                            "value": "1"
+                        }
+                    ]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": 150,
+                "allow_in_bindings": 0,
+                "rows": 2,
+                "placeholder": "Limit of 150 characters",
+                "new_lines": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "block",
+                    "operator": "==",
+                    "value": ""
+                }
+            ]
+        ],
+        "menu_order": 200,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": false,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "ui_options_page_680bf8129bef1",
+        "title": "Global Options",
+        "active": true,
+        "menu_order": 0,
+        "page_title": "Global Options",
+        "menu_slug": "global",
+        "parent_slug": "themes.php",
+        "advanced_configuration": 0,
+        "icon_url": "",
+        "menu_title": "",
+        "position": "",
+        "redirect": false,
+        "description": "",
+        "menu_icon": [],
+        "update_button": "Update",
+        "updated_message": "Options Updated",
+        "capability": "edit_posts",
+        "data_storage": "options",
+        "post_id": "",
+        "autoload": 0
+    }
+]

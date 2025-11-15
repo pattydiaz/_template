@@ -1,4 +1,6 @@
 var header = $("#header");
+var header_anim;
+var header_height;
 
 var Header = {
   init: function () {
@@ -11,42 +13,39 @@ var Header = {
     }
   },
   height: function () {
-    var hh = header.outerHeight();
-    body.get(0).style.setProperty("--hh", hh + "px");
+    header_height = header.outerHeight();
+    body.get(0).style.setProperty("--hh", `${header_height}px`);
 
-    w.on("resize", function () {
-      hh = header.outerHeight();
-      body.get(0).style.setProperty("--hh", hh + "px");
+    w.on("resize", () => {
+      header_height = header.outerHeight();
+      body.get(0).style.setProperty("--hh", `${header_height}px`);
     });
   },
   scroll: function () {
-
-    var header_anim = gsap.timeline({
+    header_anim = gsap.timeline({
       paused: true,
       scrollTrigger: {
-        // markers: true,
         trigger: body,
         start: '0 0',
         end: '100% 0',
         onUpdate: (self) => {
-          self.progress > 0.01 
-            ? header.addClass("header--scroll") 
-            : header.removeClass("header--scroll");
+          const scroll_condition = self.scroll() > header_height && self.direction == 1;
+          const reverse_condition = self.direction == -1 || body.hasClass('sidecart-active');
 
-          if (self.progress > 0.01 && self.direction == 1 && !body.hasClass("nav-active"))
+          header.toggleClass("header--scroll", self.progress > 0.001);
+
+          if (scroll_condition && !body.hasClass("nav-active") && !body.hasClass('sidecart-active')) 
             header_anim.play();
 
-          if (self.direction == -1 && !body.hasClass("nav-active"))
-            header_anim.reverse();
+          if (reverse_condition) header_anim.reverse();
         }
       },
     });
 
     header_anim.to(header, {
-      y: '-100%',
-      duration: 0.3,
+      y: '-200%',
+      duration: 0.4,
       ease: 'power2.inOut'
     });
-
-  },
+  }
 };

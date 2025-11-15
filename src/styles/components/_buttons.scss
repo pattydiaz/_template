@@ -1,76 +1,4 @@
-@mixin text-decoration($important: null, $wp: false) {
-  position: relative $important;
-  background: linear-gradient(to left, transparentize($black, 1) 0, transparentize($black, 1) 50%, $black 50%, $black 100%) $important;
-  background-size: 200% 1px $important;
-  background-position: 0 100% $important;
-  background-repeat: no-repeat $important;
-  transition: background-position .3s ease $important;
-
-  @if $wp {
-    &:hover,
-    &:focus {
-      background-position: -100% 100% $important;
-    }
-  }
-
-  @else {
-    @include hover {
-      background-position: -100% 100% $important;
-    }
-  }
-}
-
-@mixin btn-default($important: null) {
-  display: inline-block $important;
-  min-width: 42px $important;
-  min-height: 42px $important;
-  text-decoration: none $important;
-  cursor: pointer $important;
-  pointer-events: all $important;
-  white-space: nowrap $important;
-
-  body.mobile & {
-    min-width: 48px $important;
-    min-height: 48px $important;
-  }
-}
-
-@mixin btn-primary($important: null, $wp: false) {
-  @if $wp {
-    &:hover,
-    &:focus {
-
-    }
-  }
-  
-  @else {
-    @include hover {
-
-    }
-  }
-
-}
-
-@mixin btn-secondary($important: null, $wp: false) {
-  @if $wp {
-    &:hover,
-    &:focus {
-
-    }
-  }
-  
-  @else {
-    @include hover {
-
-    }
-  }
-}
-
-@mixin btn-disabled {
-  cursor: no-drop;
-  opacity: .5;
-  pointer-events: none;
-}
+@use "../shared" as *;
 
 button {
   padding: 0;
@@ -91,8 +19,8 @@ button {
   &-color {
     @extend #{$self};
     background-color: transparent;
-    color: currentColor;
-    transition: color .3s ease;
+    color: $current;
+    transition: color 0.3s ease;
     
     @include hover {
       color: var(--hover);
@@ -102,22 +30,22 @@ button {
   &-opacity {
     @extend #{$self};
     background-color: transparent;
-    color: currentColor;
+    color: $current;
     opacity: 1;
-    transition: opacity .3s ease;
+    transition: opacity 0.3s ease;
     will-change: opacity;
     
     @include hover {
-      opacity: .6;
+      opacity: 0.6;
     }
   }
 
   &-scale {
     @extend #{$self};
     background-color: transparent;
-    color: currentColor;
+    color: $current;
     transform: scale(1) translate3d(0,0,0);
-    transition: transform .45s ease;
+    transition: transform 0.45s ease;
     
     @include hover {
       transform: scale(1.1) translate3d(0,0,0);
@@ -136,9 +64,12 @@ button {
     @include btn-secondary;
   }
 
+}
+
+.btn,
+.button {
   &[disabled="disabled"],
   &.disabled {
     @include btn-disabled;
   }
-
 }

@@ -1,14 +1,5 @@
-@import "mixins";
-@import "variables";
-
-@import "base/fonts";
-@import "base/breakpoints";
-
-@import "components/typography";
-@import "components/buttons";
-
-@import "admin/mixins";
-@import "admin/variables";
-@import "admin/login";
-@import "admin/wp";
-@import "admin/acf";
+@use "admin/mixins";
+@use "admin/variables";
+@use "admin/login";
+@use "admin/wp";
+@use "admin/acf";

@@ -2,7 +2,7 @@
 /** 
  * Components / Mailchimp Newsletter Form
  * 
- * @package Makers Launchkit Theme
+ * @package Project Name Theme
  * 
 */
 

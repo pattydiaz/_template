@@ -1,15 +1,17 @@
+@use "../shared" as *;
+
 .parallax {
   $self: &;
 
   &-item {
     @include transform-fix;
-    // will-change: transform;
+    will-change: transform;
   }
 
   &-zoom {
     overflow: hidden;
 
-    img {
+    #{$self}-item {
       height: 115% !important;
     }
   }

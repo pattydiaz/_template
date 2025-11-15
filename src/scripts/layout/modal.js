@@ -1,5 +1,6 @@
 var modal = $('#modal');
-var modal_wrapper = $('#modal').find('.modal-wrapper');
+var modal_wrapper = modal.find('.modal-wrapper');
+var modal_container = modal.find('.modal-container');
 var modal_content = $('#modal-content');
 var modal_close = $('#modal-close');
 var modal_btn = $('.modal-btn');
@@ -9,35 +10,26 @@ var Modal = {
     Modal.build();
   },
   build: function() {
-    if(modal.is(':visible')) {
+    if (!modal.is(':visible')) return;
+    Modal.bindEvents();
+  },
+  bindEvents: function() {
+    modal_btn.on('click', function(e) {
+      e.preventDefault();
+      const $btn = $(this);
+      const $content = $btn.next('.modal-content');
+      Modal.open($btn, $content);
+    });
 
-      modal_btn.each(function() {
-        var $this = $(this);
-        var $content = $this.next('.modal-content');
+    modal_btn.on('keyup', function(e) {
+      if (e.key === 'Enter') modal.trigger('focus');
+    });
 
-        $this
-        .on('click',function(e){
-          e.preventDefault();
-          Modal.open($this, $content);
-        })
-        .on('keyup',function(e){
-          if(e.key == 'Enter') modal.trigger('focus');
-        });
-        
-      });
+    modal_close.on('click', Modal.close);
 
-      modal_close.on('click',function(){
-        Modal.close();
-      });
-
-      w
-      .on('keyup', function(e){
-        if (e.key === 'Escape') Modal.close();
-      })
-      .on('resize',function(){
-        Modal.overflow();
-      })
-    }
+    w.on('keyup', function(e) {
+      if (e.key === 'Escape') Modal.close();
+    }).on('resize', Modal.overflow);
   },
   open: function(el, content) {
     Scrolling.lock();
@@ -46,41 +38,49 @@ var Modal = {
     modal.addClass('modal--open');
     body.addClass('modal-active');
 
-    var class_name = content.attr('class');
-    var class_list = class_name.split(/\s+/);
+    if (content && content.length) {
 
-    $.grep(class_list, function (element, i) {
-      if (class_name) {
-        if (i === 0) return false;
-        modal.addClass(element);
-        return true;
-      }
-    });
+      // Apply all classes except the first (base) one
+      const class_list = content.attr('class').split(/\s+/).slice(1);
+      modal.addClass(class_list.join(' '));
 
-    content.addClass('modal-content--empty').find('> div').appendTo(modal_content);
+      // Copy data attributes
+      $.each(content.data(), function(key, value) {
+        modal_layout.attr('data-' + key, value);
+      });
 
-    setTimeout(() => {
-      modal.trigger('focus');
-    }, 100);
+      content.addClass('modal-content--empty').children('div').appendTo(modal_content);
+    }
+
+    setTimeout(() => modal.trigger('focus'), 100);
     
   },
   close: function() {
     Scrolling.unlock();
 
     setTimeout(() => {
-      modal.attr('class','modal');
-      modal.one('transitionend webkitTransitionEnd oTransitionEnd', function(){
+      modal.removeClass('modal--open');
+
+      setTimeout(() => {
         body.removeClass('modal-active');
 
-        modal_content.find('> div').appendTo('.modal-content--empty');
-        $('.modal-content--empty').removeClass('modal-content--empty');
-
+        const empty_content = $('.modal-content--empty');
+        modal_content.children('div').appendTo(empty_content);
+        empty_content.removeClass('modal-content--empty');
         modal_content.empty();
-      });
-    }, 350);
+
+        // Reset modal class and data
+        modal.attr('class', 'modal');
+        $.each(modal_layout.data(), function(key) {
+          modal_layout.removeAttr('data-' + key);
+        });
+
+      }, 600);
+
+    }, 300);
   },
   overflow: function () {
-    var mh = $(".modal-container")[0].scrollHeight;
-    mh > wh ? modal.addClass("modal--scroll") : modal.removeClass("modal--scroll");
+    const mh = modal_container[0].scrollHeight;
+    modal.toggleClass('modal--scroll', mh > wh);
   },
 }

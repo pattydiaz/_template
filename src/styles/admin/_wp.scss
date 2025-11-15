@@ -1,21 +1,8 @@
-#adminmenu,
-#adminmenu .wp-submenu,
-#adminmenuback,
-#adminmenuwrap {
-  width: 190px;
-}
-
-#adminmenu .wp-submenu {
-  left: 190px;
-}
+@use "../shared" as *;
+@use "../admin/mixins" as *;
 
 #wpcontent {
   position: relative;
-}
-
-#wpcontent,
-#wpfooter {
-  margin-left: 190px;
 }
 
 #wpcontent .banner {
@@ -42,5 +29,12 @@
 #postimagediv {
   .inside {
     @include wp-admin;
+  }
+}
+
+// Hide "Patterns"
+#menu-appearance {
+  ul.wp-submenu {
+    li:nth-child(3) { display: none !important; }
   }
 }

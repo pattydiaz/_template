@@ -1,52 +1,53 @@
+@use "../shared" as *;
+@use "../admin/mixins" as *;
+
 .acf {
   &-fields {
     >.acf-field {
-      padding-top: $spacing !important;
-      padding-bottom: $spacing !important;
+
+      [data-name="id"],
+      [data-name="visibility"] {
+        background-color: #f3f4f5;
+      }
 
       .acf-label {
         .description {
-          @include wp-admin;
+          @include wp-admin($important: !important);
         }
       }
 
-      &[data-width="25"] {
-        @include bp-down(sm) {
-          width: 50% !important;
+      &.text-right { text-align: right;}
+      &.text-center { text-align: center;}
+
+      input, textarea {
+        &::placeholder {
+            opacity: 0.75;
+            transition: opacity 0.3s $ease-default;
+          }
+        
+        &:focus {
+          &::placeholder { opacity: 0.5; }
         }
       }
 
       .acf-image-uploader {
         .image-wrap {
-          max-width: 150px !important;
+          max-width: 50px !important;
+          max-height: 50px !important;
+          
+          img {
+            width: 50px !important;
+            height: 50px !important;
+            min-width: 50px !important;
+            min-height: 50px !important;
+            max-width: 50px !important;
+            max-height: 50px !important;
+          }
         }
       }
 
       .acf-gallery {
         height: 300px !important;
-      }
-
-      .acf-field-clone {
-        padding: 0 !important;
-        border: none !important;
-
-        > .acf-label {
-          display: none;
-        }
-
-        > .acf-input {
-          > .acf-fields {
-            border: none;
-
-            >.acf-field {
-              &.-r0 {
-                border-top-width: 1px !important;
-                border-top-style: solid !important;
-                border-top-color: #EAECF0 !important;
-              }
-            }
-          }
-        }
       }
 
       &.acf-accordion {
@@ -74,13 +75,23 @@
       }
 
       &.acf-field-message {
-
-        + .acf-field {
+        
+        &:not(.no-style) {
+          padding-top: 0 !important;
+          padding-bottom: 0 !important;
           border-top: none;
+          
+          + .acf-field {
+            border-top: none;
+          }
         }
 
+
         .acf-input {
-          @include wp-admin;
+          
+          p {
+            @include wp-admin($important: !important);
+          }
 
           ul {
             padding-left: $spacing*1.2;
@@ -100,23 +111,7 @@
           min-height: 120px !important;
         }
       }
-    }
-  }
 
-  &-range-wrap {
-    input[type=number] {
-      min-width: 4em !important;
-    }
-  }
-
-  &-tab-wrap {
-    overflow: hidden;
-
-    .acf-tab-group {
-      margin-bottom: 0 !important;
-      overflow: hidden !important;
-      border-bottom: none !important;
-      background-color: #ffffff;
     }
   }
 
@@ -129,21 +124,24 @@
       }
     }
   }
-
-  &-flexible-content {
-    .acf-flexible-content {
-      .acf-fc-layout-handle {
-        background-color: #f3f4f5;
-        
-        &:hover {
-          background-color: #e5e7e9;
-        }
-      }
-    }
-  }
 }
 
 // [FORCE] Hide Content Editor 
 #acf-group_6451a05839d05 {
   display: none !important;
+}
+
+// Removals based on User Role
+body:not(.role-administrator):not(.role-developer) .admin-only {
+  display: none;
+}
+
+// Removals based on "Developer" only User Role
+body:not(.role-developer) .dev-only {
+  display: none;
+}
+
+// Removals based on Page
+body:not(.page-slug-home) .home-only {
+  display: none;
 }

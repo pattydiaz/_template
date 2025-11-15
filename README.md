@@ -64,6 +64,11 @@ Make sure MAMP settings look like this:
 
 For details on how to set up this configuration with SSL [read here](https://stackoverflow.com/a/70017835).
 
+> Note: If issues occur while trying to start MAMP servers try running this command in terminal to debug issues:
+```
+sudo /Applications/MAMP/Library/bin/apachectl start
+```
+
 ### New Project
 
 ** This build requires a GSAP Premimum License with a `.npmrc` file. Otherwise, remove and adjust dependencies and components as needed.
@@ -72,11 +77,11 @@ For details on how to set up this configuration with SSL [read here](https://sta
 - In **package.json**, edit any instance of `project-name`
 - In **gruntfile.js**, edit the `theme` variable
 - In **public/wp-content/themes**, rename **project-name**-theme
-- Run `npm install`
+- Run `npm install` or `npm i`
 
 ## Build
 
 - Launch MAMP
 - Run `grunt dev` to build the project for development
 - Run `grunt prod` when ready to push to production
-- Run `grunt min` to compress images, remove unused CSS, and run production
+- Run `grunt images` to compress images and svg files

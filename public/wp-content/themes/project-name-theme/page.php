@@ -16,7 +16,7 @@ get_header();
 
     if (!post_password_required($post)) :
 
-      get_template_part(TP . 'hero', 'default');
+      get_template_part(TP . 'default', 'hero');
 
       if(is_page(['design-guide','style-guide'])):
         get_template_part(TP.'block','design');

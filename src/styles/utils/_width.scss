@@ -1,8 +1,12 @@
+@use "../shared" as *;
+
 $widths: (
   "5": 5%,
   "15": 15%,
+  "16": 16.666%,
   "25": 25%,
   "33": 33.333%,
+  "45": 45%,
   "75": 75%,
 );
 
@@ -64,6 +68,53 @@ $widths: (
 
 .w-max {
   max-width: var(--mw, 560px);
+  
+  @include bp-up(md) {
+    max-width: var(--mw-upt, var(--mw, 560px));
+  }
+  
+  @include bp-up(lg) {
+    max-width: var(--mw-upd, var(--mw, 560px));
+  }
+
+  .text-center & {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .text-right & {
+    margin-left: auto;
+  }
+}
+
+.wt-max {
+  @include bp-up(md) {
+    max-width: var(--mw, 560px);
+  }
+
+  .text-center & {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .text-right & {
+    margin-left: auto;
+  }
+}
+
+.wd-max {
+  @include bp-up(lg) {
+    max-width: var(--mw, 560px);
+  }
+
+  .text-center & {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .text-right & {
+    margin-left: auto;
+  }
 }
 
 .w-full {

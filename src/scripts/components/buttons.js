@@ -6,36 +6,36 @@ var Buttons = {
     Buttons.anchor();
   },
   anchor: function () {
-    var anchorBtn = $(".anchor");
-    var anchorBtnNext = $(".anchor-next");
-    
-    anchorBtn.each(function () {
-      var id = $(this).attr('href');
-      
-      $(this).on("click", function (e) {
-        e.preventDefault();
-        
-        gsap.to(smoother,{
-          scrollTop: smoother.offset($(id)[0],'0 0'),
-          duration: 2,
-          ease: 'back.out'
-        })
+    const scrollToTarget = (target) => {
+      gsap.to(window, {
+        scrollTo: { y: target },
+        duration: 1,
+        ease: 'power1.inOut',
       });
-    });
+    };
 
-    anchorBtnNext.each(function() {
-      var id = $(this).parents('section').next();
+    // Handle links with href="#" or .anchor
+    const handleAnchorClick = function (e) {
+      const $this = $(this);
+      const id = $this.attr('href');
 
-      $(this).on("click", function (e) {
-        e.preventDefault();
+      // Skip certain links
+      if ($this.hasClass('skip-to-content') || !id || id === '#') return;
 
-        gsap.to(smoother,{
-          scrollTop: smoother.offset($(id)[0],'0 0'),
-          duration: 2,
-          ease: 'power1.inOut'
-        })
-      });
-    })
+      e.preventDefault();
+      const $target = $(id);
+      if ($target.length) scrollToTarget($target[0]);
+    };
+
+    // Handle .anchor-next buttons
+    const handleNextClick = function (e) {
+      e.preventDefault();
+      const nextSection = $(this).closest('section').next()[0];
+      if (nextSection) scrollToTarget(nextSection);
+    };
+
+    doc.on('click', 'a[href^="#"]:not(.skip-to-content), .anchor', handleAnchorClick);
+    doc.on('click', '.anchor-next', handleNextClick);
   },
   doubleclick: function (el) {
     //if already clicked return TRUE to indicate this click is not allowed

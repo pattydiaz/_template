@@ -29,8 +29,11 @@ add_action('wp_enqueue_scripts', function() {
   wp_enqueue_style('style');
   wp_enqueue_style('main');
   
-  wp_register_script('main', TD.'/assets/main.js', [], $VER_JS, true);
+  wp_register_script('vendor', TD.'/assets/vendor.js', [], '', true);
+  wp_register_script('main', TD.'/assets/main.js', ['vendor'], $VER_JS, true);
+  wp_enqueue_script('vendor');
   wp_enqueue_script('main');
+
 });
 
 

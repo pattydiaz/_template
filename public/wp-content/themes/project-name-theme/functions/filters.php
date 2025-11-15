@@ -17,9 +17,13 @@ add_filter('auto_core_update_send_email', '__return_false');
 add_filter('auto_plugin_update_send_email', '__return_false');
 add_filter('auto_theme_update_send_email', '__return_false');
 
-
 add_filter( 'body_class', function($classes){
   global $post;
+
+  // Remove ONLY the "woocommerce" class
+  if (($key = array_search('woocommerce', $classes)) !== false) {
+    unset($classes[$key]);
+  }
 
   $slug = get_page_template_slug($post);
   $template = $slug ? $post->post_name : 'default';
@@ -46,7 +50,13 @@ add_filter( 'body_class', function($classes){
   );
 
   foreach ( $include as $class => $do_include ) {
-    $do_include ? $classes[ $class ] = $class : $classes[] = $post->post_type . '-' . $post->post_name;
+    $p_type = $post ? $post->post_type : '';
+    $p_name = $post ? $post->post_name : '';
+
+    if($post && !empty(get_field('template-slug'))) { $p_name = get_field('template-slug'); }
+
+    $custom = $post ? $p_type . '-' . $p_name : '';
+    $do_include ? $classes[ $class ] = $class : $classes[] = $custom;
   }
 
   return $classes;
@@ -59,7 +69,7 @@ add_filter('jpeg_quality', function ($quality) {
 
 
 add_filter('big_image_size_threshold', function($threshold){
-  return 2800;
+  return 3000;
 }, 999, 1);
 
 
@@ -79,7 +89,8 @@ add_filter( 'private_title_format', function() {
 
 
 add_filter('gettext', function ($text) {
-  if ($text == 'Lost your password?')
+  global $pagenow;
+  if ($pagenow === 'wp-login.php' && $text == 'Lost your password?')
     $text .= '<br /><a href="https://makersandallies.com" title="Made by Makers & Allies" target="_blank" rel="nofollow">Made by Makers & Allies</a>';
   return $text;
 });
@@ -98,7 +109,7 @@ add_filter('admin_footer_text', function ($text) {
 $editor_toolbar1 = ['bold','italic','bullist','numlist','alignleft','aligncenter','alignright','link','unlink','hr','pastetext','removeformat','blockquote','undo','redo','outdent','indent','wp_help'];
 $editor_toolbar2 = ['formatselect','styleselect','forecolor'];
 
-$basic_toolbar1 = ['bold','italic','bullist','numlist','alignleft','aligncenter','alignright','link','unlink','undo','redo','formatselect','styleselect','forecolor'];
+$basic_toolbar1 = ['bold','italic','bullist','numlist','alignleft','aligncenter','alignright','link','unlink','hr','pastetext','removeformat','undo','redo','formatselect','styleselect','forecolor'];
 
 add_filter('tiny_mce_before_init', function ($init) {
   global $editor_toolbar1, $editor_toolbar2;
@@ -109,10 +120,8 @@ add_filter('tiny_mce_before_init', function ($init) {
   $init['block_formats'] = 'Paragraph=p;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
 
   $init['style_formats'] = json_encode([
-    ['subheading' => 'Subheading', 'selector' => 'div', 'classes' => 'subheading'],
-    ['caption' => 'Caption', 'selector' => 'div', 'classes' => 'caption'],
-    ['title' => 'Button Primary', 'selector' => 'a', 'classes' => 'btn btn-primary'],
-    ['title' => 'Button Secondary', 'selector' => 'a', 'classes' => 'btn btn-secondary'],
+    ['title' => 'Primary Button', 'selector' => 'a', 'classes' => 'btn btn-primary'],
+    ['title' => 'Secondary Button', 'selector' => 'a', 'classes' => 'btn btn-secondary'],
   ]);
 
   $default_colours = '
@@ -150,20 +159,35 @@ add_filter( 'post_password_required', function( $returned, $post ){
 
 // Limit image upload size
 add_filter('wp_handle_upload_prefilter', function ($file) {
-  global $current_user;
+  
+  if (!is_admin() || !isset($_REQUEST['action']) || $_REQUEST['action'] !== 'upload-attachment') {
+    return $file;
+  }
+
+  if (strpos($file['type'], 'image/') !== 0) {
+    return $file;
+  }
+
+  $current_user = wp_get_current_user();
+  $user_email = $current_user->user_email;
   $user_roles = $current_user->roles;
   $user_role = array_shift($user_roles);
 
-  $is_image = strpos( $file['type'], 'image' ) !== false;
+  $file_size_limit_kb = 5120; // 5 MB
+  $file_size_limit_mb = $file_size_limit_kb / 1024;
 
-  // Set the desired file size limit
-  $file_size_limit = 1024; // 1MB in KB
+  $current_size_kb = $file['size'] / 1024;
+  $current_size_mb = $current_size_kb / 1024;
 
-  $current_size = $file['size'];
-  $current_size = $current_size / 1024; //get size in KB
-
-  if ($user_role !== 'developer' && ($is_image && $current_size > $file_size_limit)) {
-    $file['error'] = sprintf(__('ERROR: File size limit is %d KB.'), $file_size_limit);
+  
+  if ((strpos($user_email, '@makersandallies.com') === false || $user_role !== 'developer') && $current_size_kb > $file_size_limit_kb) {
+    $file['error'] = sprintf(
+      __('ERROR: File size limit is %d KB (%.1f MB). Your file is %.0f KB (%.2f MB).'),
+      $file_size_limit_kb,
+      $file_size_limit_mb,
+      $current_size_kb,
+      $current_size_mb
+    );
   }
 
   return $file;
@@ -193,6 +217,16 @@ add_filter('file_is_displayable_image', function ($result, $path) {
   }
 
   return $result;
+}, 10, 2);
+
+
+// Make WP_Query order by post title case-insensitively (A-Z)
+add_filter('posts_orderby', function($orderby, $query){
+  if (!is_admin() && $query->is_main_query() && $query->get('orderby') === 'title') {
+    global $wpdb;
+    return "LOWER({$wpdb->posts}.post_title) ASC";
+  }
+  return $orderby;
 }, 10, 2);
 
 

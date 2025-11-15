@@ -12,20 +12,21 @@ var Parallax = {
       var $this = $(this);
       var item = $this.hasClass('parallax-item') ? $this : $this.find('.parallax-item');
 
-      // options
-      var percent = $this.data('percent') ? $this.data('percent') : 20;
-      var scrub = $this.data('scrub') ? $this.data('scrub') : true;
-      var offset = $this.data('offset') ? $this.data('offset') : 0;
+      var {
+        percent = 20, 
+        scrub = true, 
+        offset = 0 
+      } = $this.data();
 
-      gsap.set(item,{
+      gsap.set(item, {
         yPercent: $this.hasClass('no-offset') ? offset : percent
       });
 
+      // Create animation
       gsap.to(item, {
         yPercent: percent * -1,
         ease: 'none',
         scrollTrigger: {
-          // markers: true,
           trigger: item,
           start: '-50% 100%',
           end: '100% 0',

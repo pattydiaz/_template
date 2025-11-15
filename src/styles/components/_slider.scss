@@ -1,12 +1,25 @@
+@use "../shared" as *;
+
+/*! purgecss start ignore */
+
 .slider {
   $self: &;
 
-  &-pagination {}
+  &-pagination {
+
+    .swiper-pagination-bullet {}
+  }
+
+  &-fraction {}
 
   &-btn {
 
-    &#{$self}-prev {}
-    &#{$self}-next {}
+    &-prev {}
+    &-next {}
+
+    &.swiper-button-disabled {
+      @include hide;
+    }
 
     &.swiper-button-lock {
       @include hide;
@@ -14,14 +27,20 @@
   }
 
   &-mobile { 
-    @include bp-up(md) {
-      overflow: visible;
+    .swiper {
+
+      @include bp-up(md) {
+        overflow: visible;
+      }
     }
 
     .swiper-wrapper {
       @include bp-up(md) {
+        width: auto !important;
         transform: none !important;
       }
     }
   }
 }
+
+/*! purgecss end ignore */

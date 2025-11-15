@@ -1,6 +1,6 @@
-const sass = require("node-sass");
-const pngquant = require("imagemin-pngquant");
-const jpegoptim = require("imagemin-jpegoptim");
+const sass = require("sass");
+const pngquant = require("imagemin-pngquant").default || require("imagemin-pngquant");
+const mozjpeg = require("imagemin-mozjpeg").default || require("imagemin-mozjpeg");
 
 const pkg = require("./package.json");
 const theme = `./public/wp-content/themes/${pkg.name}-theme/`;
@@ -8,10 +8,11 @@ const nm = "./node_modules/";
 
 const lib = [
   nm + "jquery/dist/jquery.min.js",
+  nm + "js-cookie/dist/js.cookie.min.js",
   nm + "vanilla-lazyload/dist/lazyload.min.js",
   nm + "gsap/dist/gsap.min.js",
   nm + "gsap/dist/ScrollTrigger.min.js",
-  nm + "gsap/dist/ScrollSmoother.min.js",
+  nm + "gsap/dist/ScrollToPlugin.min.js",
   nm + "ajaxchimp/jquery.ajaxchimp.min.js",
   nm + "swiper/swiper-bundle.min.js",
 ];
@@ -21,6 +22,7 @@ module.exports = function (grunt) {
     sass: {
       options: {
         implementation: sass,
+        sourceMap: false
       },
       dist: {
         files: [
@@ -50,6 +52,7 @@ module.exports = function (grunt) {
         ]
       }
     },
+
     postcss: {
       options: {
         map: false,
@@ -68,6 +71,7 @@ module.exports = function (grunt) {
         ]
       }
     },
+
     purgecss: {
       target: {
         options: {
@@ -76,12 +80,7 @@ module.exports = function (grunt) {
             theme + "template-parts/*.php",
             theme + "template-parts/**/*.php",
             theme + "assets/main.js"
-          ],
-          safelist: {
-            // adjust as needed
-            greedy: [/^color/,/^bg/,/^container/,/^gap/,/^ratio/,/^input/,/^contents/,/^swiper/,/^password/,/^ppwp/,/^ppw/]
-          },
-          keyframes: true
+          ]
         },
         files: {
           [theme + "assets/main.css"]: [theme + "assets/main.css"]
@@ -90,11 +89,18 @@ module.exports = function (grunt) {
     },
 
     concat: {
-      dist: {
+      vendor: {
+        files: [
+          {
+            src: lib,
+            dest: theme + "assets/vendor.js",
+          },
+        ]
+      },
+      main: {
         files: [
           {
             src: [
-              lib,
               "src/scripts/helpers/*.js",
               "src/scripts/index.js",
               "src/scripts/*.js",
@@ -107,20 +113,24 @@ module.exports = function (grunt) {
         ]
       }
     },
-    uglify: {
+
+    terser: {
       options: {
         compress: {
-          sequences: true,
-          dead_code: true,
-          conditionals: true,
-          booleans: true,
-          unused: true,
-          if_return: true,
-          join_vars: true,
-          drop_console: true
-        }
+          drop_console: true,
+        },
+        mangle: false,
+        ecma: 2015,
       },
-      build: {
+      vendor: {
+        files: [
+          {
+            src: theme + "assets/vendor.js",
+            dest: theme + "assets/vendor.js",
+          }
+        ]
+      },
+      main: {
         files: [
           {
             src: theme + "assets/main.js",
@@ -133,8 +143,8 @@ module.exports = function (grunt) {
     imagemin: {
       options: {
         use: [
-          jpegoptim({max: 80}),
-          pngquant({quality: [0.5, 0.5]}),
+          mozjpeg({ quality: 90 }),
+          pngquant({ quality: [0.5, 0.5] }),
         ]
       },
       dynamic: {
@@ -146,6 +156,7 @@ module.exports = function (grunt) {
         }]
       }
     },
+
     svgmin: {
       options: {
         plugins: [
@@ -159,15 +170,15 @@ module.exports = function (grunt) {
           }
         ]
       },
-			dist: {
-				files: [{
+      dist: {
+        files: [{
           expand: true,
           cwd: theme + "assets/images/",
           src: "**/*.svg",
           dest: theme + "assets/images/",
         }]
-			}
-		},
+      }
+    },
 
     browserSync: {
       bsFiles: {
@@ -179,12 +190,16 @@ module.exports = function (grunt) {
       options: {
         watchTask: true,
         proxy: `local.${pkg.name}.com`,
+        host: `local.${pkg.name}.com`,
+        open: 'external',
+        port: 3000,
         // https: {
         //   key: `./.crt/_wildcard.${pkg.name}.com-key.pem`,
         //   cert: `./.crt/_wildcard.${pkg.name}.com.pem`
         // }
       }
     },
+
     watch: {
       scss: {
         files: ["src/styles/*.scss", "src/styles/**/*.scss"],
@@ -196,21 +211,21 @@ module.exports = function (grunt) {
       },
     },
   });
-  
-  grunt.loadNpmTasks("grunt-sass");
+
+  grunt.loadNpmTasks("grunt-sass"); 
   grunt.loadNpmTasks("grunt-postcss");
   grunt.loadNpmTasks("grunt-contrib-concat");
   grunt.loadNpmTasks("grunt-contrib-cssmin");
   grunt.loadNpmTasks("grunt-contrib-watch");
-  grunt.loadNpmTasks("grunt-contrib-uglify-es");
+  grunt.loadNpmTasks("grunt-terser");
   grunt.loadNpmTasks("grunt-contrib-imagemin");
   grunt.loadNpmTasks("grunt-svgmin");
   grunt.loadNpmTasks("grunt-browser-sync");
   grunt.loadNpmTasks("grunt-purgecss");
 
-  grunt.registerTask("dev", ["sass:dist", "postcss", "concat", "browserSync", "watch"]);
-  grunt.registerTask("prod", ["sass:dist", "postcss", "concat", "cssmin", "purgecss", "uglify"]);
-  grunt.registerTask("min", ["sass:dist", "postcss", "concat", "cssmin", "purgecss", "uglify", "imagemin", "svgmin"]);
+  grunt.registerTask("dev", ["sass:dist", "postcss", "concat:vendor", "concat:main", "browserSync", "watch"]);
+  grunt.registerTask("prod", ["sass:dist", "postcss", "concat:vendor", "concat:main", "cssmin", "purgecss", "terser:vendor", "terser:main"]);
+  grunt.registerTask("images", ["imagemin", "svgmin"]);
 
   grunt.registerTask("default", ["prod"]);
   

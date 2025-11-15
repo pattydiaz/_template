@@ -6,13 +6,17 @@
 */
 ?>
 
-      <?php get_template_part(TP.'footer'); ?>
+      <?php
+        get_template_part(TP.'layout','footer');
+      ?>
 
     </main>
 
   </div> <!-- #page -->
-
-  <?php wp_footer(); ?>
+  
+  <?php 
+    wp_footer();
+  ?>
   
 </body>
 </html>

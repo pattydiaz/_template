@@ -1,3 +1,9 @@
+@use "../shared" as *;
+
+/*! purgecss start ignore */
+
 .nav {
   $self: &;
 }
+
+/*! purgecss end ignore */

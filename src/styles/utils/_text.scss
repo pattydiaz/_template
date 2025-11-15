@@ -1,3 +1,5 @@
+@use "../shared" as *;
+
 .text {  
   &-normal { font-style: $fs-normal; }
   &-italic { font-style: $fs-italic; }
@@ -13,10 +15,13 @@
   &-center { text-align: center; }
   &-left { text-align: left; }
   &-right { text-align: right; }
+  &-justify { text-align: justify; }
   &-lowercase { text-transform: lowercase; }
   &-uppercase { text-transform: uppercase; }
   &-capitalize { text-transform: capitalize; }
   &-unset { text-transform: unset; }
   &-nowrap { white-space: nowrap; }
+  &-wrap { word-wrap: break-word; }
+  &-monospace { font-family: $ff-monospace; }
   &-decoration { @include text-decoration; }
 }

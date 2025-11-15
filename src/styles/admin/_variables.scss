@@ -1,27 +1,30 @@
+@use "../shared" as *;
+
 :root {
   --wp-login-bg-color: #{$white};
   --wp-login-form-color: #{$white};
   --wp-login-text-color: #{$black};
   --wp-login-link-color: #{$black};
-  --wp-login-link-color-hover: #{transparentize($black,0.5)};
+  --wp-login-link-color-hover: #{$black-transparent};
   --wp-login-logo-color: #{$black};
-  --wp-login-logo-color-hover: #{transparentize($black,0.5)};
+  --wp-login-logo-color-hover: #{$black-transparent};
   --wp-login-logo-height: auto;
   --wp-login-logo-width: 250px;
   --wp-login-logo-ratio: 1 / 1;
   --wp-login-input-bg: #{$white};
   --wp-login-input-autofill-bg: #{$white};
   --wp-login-input-border: #{$black};
-  --wp-login-input-border-focus: #{transparentize($black,0.5)};
+  --wp-login-input-border-focus: #{$black-transparent};
+  --wp-login-input-border-radius: 0;
   --wp-login-input-color: #{$black};
-  --wp-login-input-placeholder-color: #{transparentize($black,0.5)};
+  --wp-login-input-placeholder-color: #{$black-transparent};
   --wp-login-input-autofill-color: #{$black};
-  --wp-login-label-color: #{transparentize($black,0.5)};
+  --wp-login-label-color: #{$black-transparent};
   --wp-login-label-icon-color: #{$black};
-  --wp-login-label-icon-color-hover: #{transparentize($black,0.5)};
+  --wp-login-label-icon-color-hover: #{$black-transparent};
   --wp-login-message-bg: #{$white};
-  --wp-login-message-success: #{transparentize($black,0.5)};
-  --wp-login-message-default: #{transparentize($black,0.5)};
+  --wp-login-message-success: #{$black-transparent};
+  --wp-login-message-default: #{$black-transparent};
   --wp-login-message-error: #{$error};
   // --wp-login-btn-bg-color: #{$black};
   // --wp-login-btn-color: #{$white};

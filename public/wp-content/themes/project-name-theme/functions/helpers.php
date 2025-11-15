@@ -30,6 +30,12 @@ function str_id($string) {
   return $string;
 }
 
+function check_url($url) {
+  if (filter_var($url, FILTER_VALIDATE_URL)) : return 'URL';
+  elseif (strpos($url, '#') === 0 && strlen($url) > 1) : return 'Anchor';
+  endif;
+}
+
 function acf_video_fullscreen($field, $video_id, $data_attr = 'data-') {
   $iframe = $field;
 
@@ -55,4 +61,11 @@ function acf_video_fullscreen($field, $video_id, $data_attr = 'data-') {
   $iframe = str_replace('></iframe>', ' ' . $attr . '></iframe>', $iframe);
 
   return $iframe;
+}
+
+function current_user_has_role( $roles = [] ) {
+  foreach ( $roles as $role ) {
+    if ( current_user_can($role) ) return true;
+  }
+  return false;
 }

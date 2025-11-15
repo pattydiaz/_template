@@ -1,0 +1,79 @@
+@use "globals" as *;
+@use "mixins" as *;
+@use "variables" as *;
+@use "breakpoints" as *;
+@use "typography" as *;
+
+@mixin text-decoration($important: null, $wp: false) {
+  color: $black $important;
+  background: linear-gradient(to left, $current 0, $current 33.333%, $transparent 33.333%, $transparent 66.666%, $current 66.666%, $current 100%) $important;
+  background-size: 300% 1px $important;
+  background-position: 100% 100% $important;
+  background-repeat: no-repeat $important;
+  transition: background-position 0s $ease-default, color 0.3s $ease-default $important;
+  
+  @if $wp {
+    
+    &:hover,
+    &:focus {
+      color: color-adjust($black, $alpha: -0.5);
+      background-position: 0% 100% $important;
+      transition: background-position 0.8s $ease-default, color 0.3s $ease-default $important;
+    }
+  }
+  
+  @else {
+    @include hover {
+      color: color-adjust($black, $alpha: -0.5);
+      background-position: 0% 100% $important;
+      transition: background-position 0.8s $ease-default, color 0.3s $ease-default $important;
+    }
+  }
+}
+
+@mixin btn-default($important: null) {
+  position: relative $important;
+  display: inline-block $important;
+  text-decoration: none $important;
+  text-align: center $important;
+  cursor: pointer $important;
+  pointer-events: all $important;
+  white-space: nowrap $important;
+}
+
+@mixin btn-primary($important: null, $wp: false) {
+  @if $wp {
+    &:hover,
+    &:focus {
+
+    }
+  }
+  
+  @else {
+    @include hover {
+
+    }
+  }
+
+}
+
+@mixin btn-secondary($important: null, $wp: false) {
+  @if $wp {
+    &:hover,
+    &:focus {
+
+    }
+  }
+  
+  @else {
+    @include hover {
+
+    }
+  }
+}
+
+@mixin btn-disabled {
+  cursor: no-drop;
+  opacity: 0.3;
+  pointer-events: none;
+}

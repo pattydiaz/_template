@@ -1,10 +1,13 @@
+@use "../shared" as *;
+@use "../admin/mixins" as *;
+
 .login {
   display: flex;
   justify-content: center;
   align-items: center;
-  @include wp-body;
   background: var(--wp-login-bg-color);
   color: var(--wp-login-text-color) !important;
+  @include wp-body;
 
   #login {
     width: 100%;
@@ -15,10 +18,10 @@
     p,form,div {
 
       a:not(.button) {
-        @include wp-body;
-        @include wp-btn-reset;
-        @include wp-text-decoration;
         color: var(--wp-login-link-color);
+        @include wp-text-decoration;
+        @include wp-btn-reset;
+        @include wp-body;
   
         &:hover,
         &:focus {
@@ -30,7 +33,7 @@
 
     >h1 {
       >a {
-        margin: $spacing auto;
+        margin: $spacing auto 0;
         width: var(--wp-login-logo-width);
         height: var(--wp-login-logo-height);
         aspect-ratio: var(--wp-login-logo-ratio);
@@ -58,8 +61,14 @@
       padding: $spacing*1.5;
       text-align: left;
       background-color: var(--wp-login-message-bg);
-      box-shadow: 0 2px 15px 0 transparentize($black, .65);
-      font-size: 87%;
+      box-shadow: 0 2px 15px 0 color-adjust($black, $alpha: -0.65);
+      @include wp-message;
+      
+      a { @include wp-message; }
+
+      a[href="https://makersandallies.com"] {
+        display: none !important;
+      }
     }
 
     >#login_error {
@@ -79,18 +88,19 @@
         left: $spacing*2;
         right: $spacing*2;
       }
+      margin-top: 0;
       border: none;
       box-shadow: none;
       background: var(--wp-login-form-color);
 
       input {
-        border-radius: 0;
         box-shadow: none;
         background-color: var(--wp-login-input-bg);
         border: var(--wp-login-input-border-width, 1px) solid var(--wp-login-input-border);
+        border-radius: var(--wp-login-input-border-radius, 0px);
         color: var(--wp-login-input-color);
-        @include wp-input;
         transition: border-color .3s ease;
+        @include wp-input;
 
         &:focus {
           border-color: var(--wp-login-input-border-focus);
@@ -98,11 +108,11 @@
 
         &[type="password"],
         &[type="text"] {
-          min-height: 42px;
+          min-height: 45px;
           margin-top: 0;
           padding: {
-            left: $spacing;
-            right: $spacing;
+            left: $spacing*1.5;
+            right: $spacing*1.5;
           }
 
           &::placeholder {
@@ -120,20 +130,23 @@
 
         &[type="checkbox"] {
           position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 0;
 
           &:before {
             content: '';
-            @include center;
-            height: 15px;
-            width: 15px;
+            height: 60%;
+            width: 60%;
             margin: 0;
-            @include mask('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70"><path d="M32.053723096847534,34.999999761581421L12.693527936935425,15.639806509017944c-.813592910766602-.813592910766602-.813592910766602-2.132686614990234,0-2.946277618408203.813592910766602-.813592910766602,2.132686614990234-.813592910766602,2.946277618408203,0l19.360195159912109,19.360193252563477,19.360191345214844-19.360193252563477c.813591003417969-.813592910766602,2.132682800292969-.813592910766602,2.946281433105469,0,.813591003417969.813592910766602.813591003417969,2.132686614990234,0,2.946277618408203l-19.360195159912109,19.360193252563477,19.360195159912109,19.360191345214844c.813591003417969.813591003417969.813591003417969,2.132682800292969,0,2.946281433105469-.813591003417969.813591003417969-2.132682800292969.813591003417969-2.946281433105469,0l-19.360191345214844-19.360195159912109-19.360193252563477,19.360195159912109c-.813592910766602.813591003417969-2.132686614990234.813591003417969-2.946277618408203,0-.813592910766602-.813591003417969-.813592910766602-2.132682800292969,0-2.946281433105469l19.360193252563477-19.360191345214844Z"/></svg>');
-            background-color: var(--wp-login-input-color);
-            @include hide;
-            transition: visibility .3s ease, opacity .3s ease;
+            background-color: var(--wp-login-input-border);
+            border-radius: var(--wp-login-input-border-radius);
+            @include hide(true,0.3s);
           }
 
           &:checked {
+            
             &:before {
               @include show;
             }
@@ -143,9 +156,10 @@
 
       label {
         width: 100%;
-        margin-bottom: $spacing/2;
-        @include wp-label;
+        margin-bottom: calc($spacing/2);
+        margin-left: $spacing;
         color: var(--wp-login-label-color);
+        @include wp-label;
       }
 
       .forgetmenot {
@@ -157,7 +171,8 @@
         }
 
         >label {
-          margin-bottom: 0;
+          margin-bottom: 5px;
+          margin-left: 0;
         }
       }
 
@@ -218,11 +233,11 @@
         padding-bottom: 0;
 
         .admin-email__heading {
-          @include wp-heading;
           margin-bottom: $spacing*3;
           text-transform: capitalize;
           color: var(--wp-login-text-color);
           border-color: var(--wp-login-input-border);
+          @include wp-heading;
         }
 
         .admin-email__details {

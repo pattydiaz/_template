@@ -23,8 +23,10 @@ var Loader = {
 
       lazyload = new LazyLoad(lazyloadSettings);
       body.addClass('loaded');
+      Wrapper.init();
       Scrolling.init();
       Scrolling.unlock();
+      // Hero.init();
       
     }, time);
   }

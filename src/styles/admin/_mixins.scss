@@ -1,3 +1,5 @@
+@use "../shared" as *;
+
 @mixin wp-heading {
   // @include heading-4;
 }
@@ -7,6 +9,10 @@
 }
 
 @mixin wp-caption {
+  // @include body;
+}
+
+@mixin wp-message {
   // @include body;
 }
 
@@ -22,33 +28,33 @@
   // @include body;
 }
 
-@mixin wp-admin {
-  font-style: $fs-italic;
-  font-size: 90%;
-  color: transparentize(red, 0.25);
+@mixin wp-admin($important: null) {
+  font-style: $fs-italic $important;
+  font-size: 90% $important;
+  color: color-adjust(red, $alpha: -0.25) $important;
 }
 
 @mixin wp-btn-reset {
   text-decoration: none !important;
   outline: none !important;
   line-height: initial !important;
-  // border-color: transparent !important;
   box-shadow: 0 0 0 0 transparent !important;
+  border-color: transparent !important;
   border-radius: 0 !important;
 }
 
 @mixin wp-text-decoration {
-  @include text-decoration(!important, true);
+  @include text-decoration($important: !important, $wp: true);
 }
 
 @mixin wp-btn-primary {
   @include wp-btn-reset;
-  // @include btn-primary(!important, true);
+  // @include btn-primary($important: !important, $wp: true);
 }
 
 @mixin wp-btn-secondary {
   @include wp-btn-reset;
-  // @include btn-secondary(!important, true);
+  // @include btn-secondary($important: !important, $wp: true);
 }
 
 @mixin wp-logo {
