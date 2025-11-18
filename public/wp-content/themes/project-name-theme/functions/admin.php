@@ -65,11 +65,25 @@ add_action('customize_register', function($wp_customize) {
 
   $user_email = $current_user->user_email;
   
-  if(strpos($user_email, '@makersandallies.com') === false) {
-    $wp_customize->get_panel( 'ppwp' )->active_callback = '__return_false';
-    $wp_customize->get_panel( 'ppwp_sitewide' )->active_callback = '__return_false';
-    $wp_customize->get_panel( 'ppwp_pcp' )->active_callback = '__return_false';
-    $wp_customize->get_section( 'ppwp_upsell' )->active_callback = '__return_false';
+  if (strpos($user_email, '@makersandallies.com') === false) {
+
+    $panels = [
+      'ppwp',
+      'ppwp_sitewide',
+      'ppwp_pcp'
+    ];
+
+    foreach ($panels as $panel_id) {
+      $panel = $wp_customize->get_panel($panel_id);
+      if ($panel) {
+        $panel->active_callback = '__return_false';
+      }
+    }
+
+    $ppwp_upsell = $wp_customize->get_section('ppwp_upsell');
+    if ($ppwp_upsell) {
+      $ppwp_upsell->active_callback = '__return_false';
+    }
   }
 
   $wp_customize->add_setting(

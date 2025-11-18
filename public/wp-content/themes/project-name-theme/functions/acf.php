@@ -65,7 +65,7 @@ add_filter('wpseo_pre_analysis_post_content', function ($content) {
   $post_id = get_the_ID();
   
   // Define the flexible content field names you want to include
-  $acf_blocks = ['custom-blocks', 'vendor-blocks', 'post-blocks'];
+  $acf_blocks = ['custom-blocks', 'post-blocks'];
 
   foreach ($acf_blocks as $acf_field) {
     $flexible_content = get_field($acf_field, $post_id);
