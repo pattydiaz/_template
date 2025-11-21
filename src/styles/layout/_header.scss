@@ -11,6 +11,14 @@
   z-index: 100;
 
   &-container {
-    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: {
+      left: $spacing*1.5;
+      right: $spacing*1.5;
+      top: $spacing*2;
+      bottom: $spacing*2;
+    }
   }
 }

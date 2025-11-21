@@ -1,54 +1,7 @@
-@use "base/reset";
-@use "base/a11y";
-
-@use "vendors/swiper";
-
-@use "components/typography";
-@use "components/buttons";
-@use "components/inputs";
-@use "components/contents";
-@use "components/video";
-@use "components/parallax";
-@use "components/lazyload";
-@use "components/social";
-@use "components/slider";
-@use "components/blurb";
-
-@use "utils/display";
-@use "utils/position";
-@use "utils/flex";
-@use "utils/colors";
-@use "utils/borders";
-@use "utils/container";
-@use "utils/spacing";
-@use "utils/backgrounds";
-@use "utils/text";
-@use "utils/images";
-@use "utils/crop";
-@use "utils/icons";
-@use "utils/sections";
-@use "utils/width";
-@use "utils/height";
-@use "utils/column";
-@use "utils/gap";
-@use "utils/ratio";
-@use "utils/overflow";
-@use "utils/opacity";
-@use "utils/list";
-@use "utils/float";
-@use "utils/break";
-@use "utils/z-index";
-@use "utils/animated";
-@use "utils/keyframes";
-
-@use "layout/general";
-@use "layout/wrapper";
-@use "layout/header";
-@use "layout/nav";
-@use "layout/footer";
-@use "layout/modal";
-
-@use "sections/password";
-@use "sections/hero";
-
-@use "pages/default";
+@use "base" as *;
+@use "vendors" as *;
+@use "components" as *;
+@use "utils" as *;
+@use "layout" as *;
+@use "sections" as *;
+@use "pages" as *;

@@ -53,10 +53,13 @@ add_filter( 'body_class', function($classes){
     $p_type = $post ? $post->post_type : '';
     $p_name = $post ? $post->post_name : '';
 
-    if($post && !empty(get_field('template-slug'))) { $p_name = get_field('template-slug'); }
+    if ( $post && function_exists('get_field') ) {
+      $field_val = get_field('template-slug');
+      if ( ! empty( $field_val ) ) { $p_name = $field_val; }
+    }
 
     $custom = $post ? $p_type . '-' . $p_name : '';
-    $do_include ? $classes[ $class ] = $class : $classes[] = $custom;
+    $do_include ? $classes[$class] = $class : $classes[] = $custom;
   }
 
   return $classes;
