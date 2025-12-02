@@ -207,7 +207,7 @@ module.exports = function (grunt) {
       },
       scripts: {
         files: ["src/scripts/*.js", "src/scripts/**/*.js"],
-        tasks: ["concat:dist"],
+        tasks: ["concat:vendor", "concat:main"],
       },
     },
   });
